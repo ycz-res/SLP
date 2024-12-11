@@ -1,0 +1,28 @@
+Abstract—Sign Language Translation (SLT) has made significant progress in the field of intelligent interaction and accessible
+communication in recent years. Still, existing SLT systems usually
+ignore the expression of emotions in sign language, resulting
+in translation results that lack the emotional level, and make
+it difficult to convey the real emotions and communication
+intentions of the original sign language users. To this end, this
+paper proposes a multimodal sign language translation model in-
+tegrating emotional information, named EmotiTrans. The model
+effectively captures emotional changes and complex semantic
+relationships in sign language by introducing emotional annota-
+tion and multimodal feature fusion strategies and combines the
+emotional information with the text translation in the decoding
+stage to generate more natural and fluent SLT results. Regarding
+methodology, we use pre-trained emotion classifiers to perform
+emotion annotation for sign language videos. We fully exploit
+the spatiotemporal features of sign language actions, expressions,
+and gestures by introducing a skeleton feature extraction module
+and temporal dynamic modeling. Experiments conducted on two
+publicly available datasets, PHOENIX14 T and How2Sign, show
+that this paper’s method achieves significant improvements in
+metrics such as BLEU-4 and sentiment accuracy compared to
+the current state-of-the-art models, verifying the important role
+of sentiment information in SLT tasks. This study provides a
+new solution for emotion-driven SLT and lays a theoretical and
+practical foundation for building more natural and emotion-rich
+SLT systems in the future.
+Index Terms—Sign Language Translation, Emotion-Drivenn
+Translation, Contrastive Language-Image Pre-training
