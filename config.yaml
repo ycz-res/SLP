@@ -1,0 +1,7 @@
+# How2Sign数据集参数
+How2SignDataset:
+  keypoints_dir: /root/autodl-tmp/How2Sign/keypoints/
+  train_label_path: ./data/How2Sign/dev.csv
+  dev_label_path: ./data/How2Sign/dev.csv
+  test_label_path: ./data/How2Sign/dev.csv
+  max_length: 300
