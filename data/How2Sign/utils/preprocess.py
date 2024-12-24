@@ -1,5 +1,5 @@
 import os
-from utils import read_json_file
+from utils import load_json
 import json
 
 
@@ -26,7 +26,7 @@ def keypoints_preprocess(src_path, res_path):
                 continue
 
             json_path = os.path.join(sub_dir_path, json_name)
-            data = read_json_file(json_path)
+            data = load_json(json_path)
 
             # Extract and combine keypoints
             pose_keypoints = extract_keypoints(data, 'pose_keypoints_2d')

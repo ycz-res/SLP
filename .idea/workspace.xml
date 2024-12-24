@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/augmentation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/dev.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/How2Sign/dev.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/keypoints/_2FBDaOPYig_2-3-rgb_front.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/How2Sign/keypoints/-d5dN54tH2E_0-1-rgb_front.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/keypoints/_2FBDaOPYig_2-5-rgb_front.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/How2Sign/keypoints/-d5dN54tH2E_1-1-rgb_front.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/utils/preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/How2Sign/utils/preprocess.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +51,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/SapereAude/PycharmProjects/SLP/data&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/SapereAude/PycharmProjects/SLP/data/How2Sign/keypoints&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -55,10 +61,41 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/How2Sign/keypoints" />
+      <recent name="$PROJECT_DIR$/data/How2Sign/utils" />
+      <recent name="$PROJECT_DIR$/data/How2Sign" />
+      <recent name="$PROJECT_DIR$/data/How2Sign/videos" />
       <recent name="$PROJECT_DIR$/data" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/How2Sign/src" />
+      <recent name="$PROJECT_DIR$/data/How2Sign" />
+      <recent name="$PROJECT_DIR$/data/How2Sign/utils" />
     </key>
   </component>
   <component name="RunManager" selected="Python.train">
+    <configuration name="preprocess" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SLP" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data/How2Sign/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/How2Sign/utils/preprocess.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SLP" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -107,6 +144,7 @@
       <list>
         <item itemvalue="Python.train" />
         <item itemvalue="Python.utils" />
+        <item itemvalue="Python.preprocess" />
       </list>
     </recent_temporary>
   </component>
@@ -124,6 +162,9 @@
       <workItem from="1732878537219" duration="2115000" />
       <workItem from="1733537440226" duration="35543000" />
       <workItem from="1734580170632" duration="432000" />
+      <workItem from="1734581877779" duration="40968000" />
+      <workItem from="1734843097661" duration="3803000" />
+      <workItem from="1734850114570" duration="7498000" />
     </task>
     <servers />
   </component>
@@ -134,7 +175,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SLP$utils.coverage" NAME="utils Coverage Results" MODIFIED="1732203135392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SLP$train.coverage" NAME="train Coverage Results" MODIFIED="1733845576831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLP$utils.coverage" NAME="utils Coverage Results" MODIFIED="1735010784478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLP$train.coverage" NAME="train Coverage Results" MODIFIED="1735018270957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLP$test.coverage" NAME="preprocess Coverage Results" MODIFIED="1734753436587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/How2Sign/utils" />
   </component>
 </project>
