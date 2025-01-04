@@ -25,7 +25,7 @@ class How2SignDataset(Dataset):
         keypoints_name = sample['keypoints_name']
 
         tgt_sample = self._load_keypoints(os.path.join(self.keypoints_dir, keypoints_name))
-
+        print(tgt_sample.dtype)
         return src_sample, tgt_sample
 
     def _load_keypoints(self, path):
@@ -34,7 +34,8 @@ class How2SignDataset(Dataset):
         if len(data) > self.max_length:
             data = [data[i] for i in
                     sorted(random.sample(range(len(data)), self.max_length))]
-        data_tensor = torch.tensor(data, dtype=torch.float16)
+        # data_tensor = torch.tensor(data, dtype=torch.float16)
+        data_tensor = torch.tensor(data, dtype=torch.long)
         return data_tensor
 
     def collate_fn(self, batch):
@@ -51,6 +52,7 @@ class How2SignDataset(Dataset):
                                    return_tensors="pt",
                                    padding=True,
                                    truncation=True)
+        src_input['input_ids'] = src_input['input_ids'].float()
 
         # --关键点--
         tgt_batch_len = [len(vid) for vid in tgt_batch]
@@ -63,7 +65,7 @@ class How2SignDataset(Dataset):
                     torch.zeros(tgt_batch_max_len - len(vid), *vid.shape[1:])
                 ), dim=0)
             for vid in tgt_batch
-        ])
+        ]).long()
 
         # 关键点序列掩码
         tgt_batch_mask = torch.tensor(
@@ -76,11 +78,14 @@ class How2SignDataset(Dataset):
             'attention_mask': tgt_batch_mask}
 
         print(src_input['input_ids'].shape)
-        print(src_input['attention_mask'].shape)
-        print(src_input['attention_mask'])
+        # print(src_input['input_ids'])
+        print(src_input['input_ids'].dtype)
+        # print(src_input['attention_mask'].shape)
+        # print(src_input['attention_mask'])
         print(tgt_input['input_ids'].shape)
-        print(tgt_input['attention_mask'].shape)
-        print(tgt_input['attention_mask'])
+        print(tgt_input['input_ids'].dtype)
+        # print(tgt_input['attention_mask'].shape)
+        # print(tgt_input['attention_mask'])
 
         # 返回一个batch视频集合 目标翻译的文本
         return src_input, tgt_input
@@ -89,4 +94,4 @@ class How2SignDataset(Dataset):
         return len(self.dataset)
 
     def __str__(self):
-        return f'# total {self.phase} set: {len(self.raw_data)}.'
+        return f'# total {self.phase} set: {len(self.dataset)}.'
