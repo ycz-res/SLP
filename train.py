@@ -1,3 +1,9 @@
+# 忽略警告---
+import warnings
+
+warnings.filterwarnings('ignore')
+# ---忽略警告
+
 import utils
 import torch
 import argparse
@@ -13,12 +19,13 @@ from dataset import How2SignDataset
 from timm.optim import create_optimizer
 from torch.optim import lr_scheduler as scheduler
 from torch.cuda.amp import GradScaler, autocast
+from loss import MAELoss
 
 
 def get_args_parser():
     a_parser = argparse.ArgumentParser('SLP scripts', add_help=False)
     a_parser.add_argument('--batch_size', default=1, type=int)
-    a_parser.add_argument('--epochs', default=2, type=int)
+    a_parser.add_argument('--epochs', default=100, type=int)
     a_parser.add_argument('--num_workers', default=1, type=int)
     a_parser.add_argument('--config', type=str, default='./config.yaml')
     a_parser.add_argument('--device', default='cpu')
@@ -69,7 +76,10 @@ def main(args_, config):
 
     # 加载预训练模型的分词器
     # tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
-    tokenizer = MBartTokenizer.from_pretrained("facebook/mbart-large-cc25")
+    tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+    # args['vocab_size'] = tokenizer.vocab_size
+    # print('tokenizer.vocab_size', tokenizer.vocab_size)
+    # tokenizer = MBartTokenizer.from_pretrained("facebook/mbart-large-cc25")
 
     # 加载训练数据集
     # 训练数据集
@@ -85,6 +95,19 @@ def main(args_, config):
                                   pin_memory=args['pin_mem'],
                                   drop_last=True)
 
+    # 验证数据集
+    val_data = eval(args['dataset'])(path=config[args['dataset']]['dev_label_path'],
+                                     tokenizer=tokenizer,
+                                     config=config,
+                                     args=args,
+                                     phase='val')
+    val_dataloader = DataLoader(val_data,
+                                batch_size=args['batch_size'],
+                                num_workers=args['num_workers'],
+                                collate_fn=val_data.collate_fn,
+                                pin_memory=args['pin_mem'],
+                                drop_last=True)
+
     # SLP Model
     model = TransformerPose()
 
@@ -92,7 +115,7 @@ def main(args_, config):
     # model.to(device)
 
     optimizer = create_optimizer(args_, model)
-    criterion = torch.nn.CrossEntropyLoss()
+    criterion = MAELoss()
     scaler = GradScaler()
 
     lr_scheduler = scheduler.CosineAnnealingLR(optimizer, eta_min=args['min_lr'], T_max=args['epochs'])
@@ -100,38 +123,23 @@ def main(args_, config):
     best_loss = float('inf')
     for epoch in range(args['epochs']):
         torch.cuda.empty_cache()
-        train_one_epoch(model,
-                        train_dataloader,
-                        optimizer,
-                        criterion,
-                        device,
-                        scaler,
-                        tokenizer)
-    #     train_one_epoch(model, train_dataloader, optimizer, criterion, device, scaler,
-    #                     tokenizer)
+        train_loss = train_one_epoch(model,
+                                     train_dataloader,
+                                     optimizer,
+                                     criterion,
+                                     device,
+                                     scaler)
+        print('train_loss: ', train_loss)
 
-    # utils.print_iterator(train_dataloader)
-    # for item in train_dataloader:
-    #     pass
-    #     # for src_input, tgt_input in item:
-    #     print(type(item[0]))
-    # print(tgt_input['input_ids'].size)
+        # TUDO
 
-    # print(train_dataloader)
-    # 实例化模型
-
-    # model = TransformerPose(k_p_nums=10,
-    #                         k_p_dim=3)
-    #
-    # src = torch.randn(1, 20, 64)
-    # tgt = torch.randn(1, 30, 30)
-    # out = model(src, tgt)
-    # print(out)
-    # print(out.shape)
+        val_loss = evaluate(model, val_dataloader,
+                            criterion, device)
 
 
-def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler, tokenizer, clip_grad_norm=1.0, alpha=0.5):
+def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
     model.train()
+    running_loss = 0.0
 
     for step, batch in enumerate(dataloader):
         print('---step---: ', step)
@@ -139,12 +147,73 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler, tok
             optimizer.zero_grad()
             src_input, tgt_input = batch
             with autocast():
-                out = model(src_input, src_input)
-                print(out.shape)
+                out = model(src_input, tgt_input)
+                # # 输出调整
+                x_values = out[:, 0::3, :]
+                y_values = out[:, 1::3, :]
+                p_values = out[:, 2::3, :]
+
+                scale = 800
+                # # 缩放x_values和y_values到 0到scale 的范围
+                x_values = torch.abs(x_values) * (scale / torch.max(torch.abs(x_values)))
+                y_values = torch.abs(y_values) * (scale / torch.max(torch.abs(y_values)))
+
+                # # 保留三位小数
+                x_values = torch.round(x_values * 1000) / 1000
+                y_values = torch.round(y_values * 1000) / 1000
+
+                # # 将p_values限制在0到1之间
+                p_values = torch.sigmoid(p_values)
+                p_values = torch.clamp(p_values, 0, 1)
+
+                # # 可以选择将x_values, y_values, p_values重新组合到out中
+                out = torch.cat((x_values, y_values, p_values), dim=1)
+                predicted_pose = out[:, :, torch.arange(out.size(-1)) % 3 != 2]
+                target_pose = tgt_input['input_ids']
+
+                print('predicted_pose', predicted_pose.shape)
+                print('target_pose', target_pose.shape)
+                loss = criterion(predicted_pose, target_pose)
+                print('loss', loss)
+                # 反向传播和梯度更新
+                scaler.scale(loss).backward()
+
+                # 梯度裁剪
+                print('here1')
+                torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+
+                print('here')
+                scaler.step(optimizer)
+                scaler.update()
+
+                # 计算损失
+                running_loss += loss.item() * src_input['input_ids'].size(0)
 
         except Exception as e:
             print("数据错误，摒弃本数据。", e)
             continue
+
+    epoch_loss = running_loss / len(dataloader.dataset)
+    return epoch_loss
+
+
+def evaluate(model, dataloader, criterion, device):
+    model.eval()
+    running_loss = 0.0
+    with torch.no_grad():
+        for step, batch in enumerate(dataloader):
+            print('---step---: ', step)
+            try:
+                src_input, tgt_input = batch
+                with autocast():
+                    out = model(src_input, tgt_input)
+                    print('val_out.shape', out.shape)
+                    # 计算评价指标
+            except Exception as e:
+                print("数据错误，摒弃本数据。", e)
+                continue
+
+    return running_loss
 
 
 if __name__ == '__main__':
