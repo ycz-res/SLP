@@ -24,6 +24,16 @@ def load_json(path):
         return json.loads(data)
 
 
+def save_json(path, data):
+    try:
+        # 保存数据到 JSON 文件
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=4, ensure_ascii=False)
+        print(f"文件已成功保存: {path}")
+    except Exception as e:
+        print(f"保存文件失败: {path}\n错误信息: {e}")
+
+
 # How2Sign 数据集加载(文件类型 cvs)
 def load_h2s_dataset(path):
     data_raws = pd.read_csv(path, sep='\t')
