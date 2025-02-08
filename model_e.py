@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-
+# 姿态生成模型
 class TransformerPose(nn.Module):
     def __init__(self,
                  src_dim=64,
@@ -62,3 +62,6 @@ class TransformerPose(nn.Module):
 
         # print('tgt[input_ids]', tgt['input_ids'].shape)
         # tgt = tgt['input_ids'].mean(dim=2)
+
+
+# 结果评价模型

@@ -13,7 +13,7 @@ import os
 from pathlib import Path
 from transformers import AutoTokenizer, MBartTokenizer
 from torch.utils.data import DataLoader
-from model import TransformerPose
+from model_e import TransformerPose
 # 动态调用引入 How2SignDataset
 from dataset import How2SignDataset
 from timm.optim import create_optimizer
