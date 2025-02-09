@@ -79,11 +79,11 @@ class How2SignDataset(Dataset):
 
         # print(src_input['input_ids'].shape)
         # print(src_input['input_ids'])
-        print('src_dtype', src_input['input_ids'].dtype)
+        # print('src_dtype', src_input['input_ids'].dtype)
         # print(src_input['attention_mask'].shape)
         # print(src_input['attention_mask'])
         # print(tgt_input['input_ids'].shape)
-        print('tgt_dtype', tgt_input['input_ids'].dtype)
+        # print('tgt_dtype', tgt_input['input_ids'].dtype)
         # print(tgt_input['attention_mask'].shape)
         # print(tgt_input['attention_mask'])
 

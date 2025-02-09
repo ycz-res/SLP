@@ -109,8 +109,8 @@ class EmoGene(nn.Module):
         # 获取 ht、et
         src = self.src_embedding(src['input_ids'])
         src = self.src_linear(src)
-        print('here')
-        ht, _, et = self.encoder(src)
+        print('src[input_ids]:', src['input_ids'])
+        ht, _, et = self.encoder(src['input_ids'])
 
         # 位置编码
         position_indices = torch.arange(self.seq_length).unsqueeze(0).expand(tgt.size(0), -1)  # 形状为 [2, 156]
