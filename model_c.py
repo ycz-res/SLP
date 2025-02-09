@@ -109,6 +109,7 @@ class EmoGene(nn.Module):
         # 获取 ht、et
         src = self.src_embedding(src['input_ids'])
         src = self.src_linear(src)
+        print('here')
         ht, _, et = self.encoder(src)
 
         # 位置编码
