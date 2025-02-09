@@ -129,12 +129,12 @@ def main(args_, config):
                                      criterion,
                                      device,
                                      scaler)
-        print('train_loss: ', train_loss)
+        # print('train_loss: ', train_loss)
 
         # TUDO
-
-        val_loss = evaluate(model, val_dataloader,
-                            criterion, device)
+        #
+        # val_loss = evaluate(model, val_dataloader,
+        #                     criterion, device)
 
 
 def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
@@ -148,6 +148,9 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
             src_input, tgt_input = batch
             with autocast():
                 out = model(src_input, tgt_input)
+                print('out.shape:', out.shape)
+                continue
+
                 # # 输出调整
                 x_values = out[:, 0::3, :]
                 y_values = out[:, 1::3, :]
