@@ -1,6 +1,10 @@
 import pandas as pd
 import json
 import yaml
+from datetime import datetime
+from colorama import init, Back
+import logging
+import os
 
 
 # 打印迭代器的内容
@@ -43,6 +47,46 @@ def load_h2s_dataset(path):
     } for _, row in data_raws.iterrows()]
 
     return res
+
+
+# ------
+# 日志
+def write_log(filename, phase, **kwargs):
+    if 'pl' in phase:
+        content = '\n'
+    else:
+        # 获取当前时间
+        current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        # 将kwargs解包并用空格隔开
+        content = '[' + current_time + ']|' + phase + '|' + '|'.join(f"{key}={value}" for key, value in kwargs.items())
+    # 追加写入到文件
+    with open(filename, 'a', encoding='utf-8') as file:
+        file.write(content + '\n')
+    print(f"{Back.GREEN}保存成功{Back.RESET}")
+
+
+def log(phase, **kwargs):
+    if 's' in phase:
+        write_log('log/s.txt', phase, **kwargs)
+    elif 'e' in phase:
+        write_log('log/e.txt', phase, **kwargs)
+    elif 'c' in phase:
+        write_log('log/c.txt', phase, **kwargs)
+    else:
+        print(f"{Back.RED}保存失败{Back.RESET}")
+
+
+# 文本修正, 提高BLEU4分数
+# 去除重复
+def remove_duplicates(text):
+    words = text.split()
+    d_words = []
+    seen = set()
+    for word in words:
+        if word not in seen:
+            d_words.append(word)
+            seen.add(word)
+    return ' '.join(d_words)
 
 
 if __name__ == '__main__':

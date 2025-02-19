@@ -13,19 +13,21 @@ import os
 from pathlib import Path
 from transformers import AutoTokenizer, MBartTokenizer
 from torch.utils.data import DataLoader
-from model_c import EmoGene
+from model_c import EmoGene, ValEmoGene
 # 动态调用引入 How2SignDataset
 from dataset import How2SignDataset
 from timm.optim import create_optimizer
 from torch.optim import lr_scheduler as scheduler
 from torch.cuda.amp import GradScaler, autocast
 from loss import MAELoss
+from sacrebleu.metrics import BLEU
+from rouge import Rouge
 
 
 def get_args_parser():
     a_parser = argparse.ArgumentParser('SLP scripts', add_help=False)
     a_parser.add_argument('--batch_size', default=1, type=int)
-    a_parser.add_argument('--epochs', default=100, type=int)
+    a_parser.add_argument('--epochs', default=10, type=int)
     a_parser.add_argument('--num_workers', default=1, type=int)
     a_parser.add_argument('--config', type=str, default='./config.yaml')
     a_parser.add_argument('--device', default='cpu')
@@ -56,6 +58,12 @@ def get_args_parser():
     a_parser.add_argument('--patience-epochs', type=int, default=10, metavar='N')
     a_parser.add_argument('--decay-rate', '--dr', type=float, default=0.1, metavar='RATE')
 
+    a_parser.add_argument('--save_model', default=True, type=bool)
+    a_parser.add_argument('--finetune', default=False, type=bool)
+    a_parser.add_argument('--succeed', default=False, type=bool)
+
+    a_parser.add_argument('--alpha', type=float, default=0.1, metavar='RATE')
+
     a_parser.add_argument('--dataset', default='How2SignDataset', type=str,
                           choices=['How2SignDataset', 'P14TDataset', 'CSLDailyDataset'])
 
@@ -76,7 +84,12 @@ def main(args_, config):
 
     # 加载预训练模型的分词器
     # tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
-    tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+    # tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+    tokenizer = MBartTokenizer.from_pretrained("facebook/mbart-large-cc25")
+    print('tokenizer_vocab_size', tokenizer.vocab_size)
+    tokenizer.src_lang = 'en_XX'
+    tokenizer.tgt_lang = 'en_XX'
+
     # args['vocab_size'] = tokenizer.vocab_size
     # print('tokenizer.vocab_size', tokenizer.vocab_size)
     # tokenizer = MBartTokenizer.from_pretrained("facebook/mbart-large-cc25")
@@ -109,32 +122,95 @@ def main(args_, config):
                                 drop_last=True)
 
     # SLP Model
-    model = EmoGene()
+    slp_model = EmoGene()
+    if args['finetune']:
+        try:
+            print("加载EmoGene预训练权重...")
+            # 加载模型的检查点
+            checkpoint_path = os.path.join(args['checkpoints_dir'], 'best_model_c.pth')
+            checkpoint = torch.load(checkpoint_path)
+            slp_model.load_state_dict(checkpoint)
+            print("EmoGene预训练权重加载成功")
+        except Exception as e:
+            print("加载EmoGene预训练权重时出现错误:", e)
+
+    # 上一阶段继承
+    if args['succeed']:
+        try:
+            print("加载第一阶段权重...")
+            # 加载模型的检查点
+            checkpoint_path = os.path.join(args['checkpoints_dir'], 'best_model_e.pth')
+            checkpoint = torch.load(checkpoint_path)
+            slp_model.load_state_dict(checkpoint, strict=False)
+            print("上阶段权重加载成功")
+        except Exception as e:
+            print("加载上一阶段权重时出现错误:", e)
+
+    # 评估模型
+    val_model = ValEmoGene()
+    # 加载评估模型权重
+    try:
+        print("加载EmoGene预训练权重...")
+        # 加载模型的检查点
+        checkpoint_path = os.path.join(args['checkpoints_dir'], 'ValEmoGene.pth')
+        checkpoint = torch.load(checkpoint_path)
+        val_model.load_state_dict(checkpoint)
+        print("ValEmoGene 预训练权重加载成功")
+    except Exception as e:
+        print("加载 ValEmoGene 预训练权重时出现错误:", e)
 
     # 移动到设备上
-    # model.to(device)
+    slp_model.to(device)
+    val_model.to(device)
 
-    optimizer = create_optimizer(args_, model)
+    optimizer = create_optimizer(args_, slp_model)
     criterion = MAELoss()
     scaler = GradScaler()
 
     lr_scheduler = scheduler.CosineAnnealingLR(optimizer, eta_min=args['min_lr'], T_max=args['epochs'])
 
-    best_loss = float('inf')
+    best_score = 0.0
     for epoch in range(args['epochs']):
         torch.cuda.empty_cache()
-        train_loss = train_one_epoch(model,
+        train_loss = train_one_epoch(slp_model,
                                      train_dataloader,
                                      optimizer,
                                      criterion,
                                      device,
                                      scaler)
-        # print('train_loss: ', train_loss)
+        utils.log('train_c', epoch=epoch + 1, train_loss=train_loss)
 
-        # TUDO
-        #
-        # val_loss = evaluate(model, val_dataloader,
-        #                     criterion, device)
+        emo_score, bleu1, bleu2, bleu3, bleu4, rouge_l = evaluate(slp_model, val_model, val_dataloader,
+                                                                  criterion, device, tokenizer)
+        print(
+            f"Epoch [{epoch + 1}/{args['epochs']}], \n"
+            f"emo_score: {emo_score:.2f}, \n"
+            f"bleu1: {bleu1:.2f}, \n"
+            f"bleu2: {bleu2:.2f}, \n"
+            f"bleu3: {bleu3:.2f}, \n"
+            f"bleu4: {bleu4:.2f}, \n"
+            f"rouge_l: {rouge_l:.2f}.")
+
+        utils.log('val_c',
+                  epoch=epoch + 1,
+                  emo_score=emo_score,
+                  bleu1=bleu1,
+                  bleu2=bleu2,
+                  bleu3=bleu3,
+                  bleu4=bleu4,
+                  rouge_l=rouge_l)
+
+        lr_scheduler.step()
+
+        current_score = (1 - args['alpha']) * bleu4 + args['alpha'] * emo_score
+
+        if best_score < current_score:
+            best_score = current_score
+            if args['save_model']:
+                torch.save(slp_model.state_dict(), os.path.join(args['checkpoints_dir'], 'best_model_c.pth'))
+
+    print("Training completed. Evaluating on test set...")
+    pass
 
 
 def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
@@ -142,50 +218,42 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
     running_loss = 0.0
 
     for step, batch in enumerate(dataloader):
-        print('---step---: ', step)
+        print('---step---: ', step + 1)
         try:
             optimizer.zero_grad()
             src_input, tgt_input = batch
+            print('src_ids:', src_input['input_ids'].size())
+            print('tgt_ids:', tgt_input['input_ids'].size())
             with autocast():
                 out = model(src_input, tgt_input)
-                print('out.shape:', out.shape)
-                continue
 
-                # # 输出调整
-                x_values = out[:, 0::3, :]
-                y_values = out[:, 1::3, :]
-                p_values = out[:, 2::3, :]
-
+                # 映射
                 scale = 800
-                # # 缩放x_values和y_values到 0到scale 的范围
-                x_values = torch.abs(x_values) * (scale / torch.max(torch.abs(x_values)))
-                y_values = torch.abs(y_values) * (scale / torch.max(torch.abs(y_values)))
 
-                # # 保留三位小数
-                x_values = torch.round(x_values * 1000) / 1000
-                y_values = torch.round(y_values * 1000) / 1000
+                # 分离 pose_values 和 emo_values
+                pose_values, emo_values = out.split([274, 1], dim=-1)
 
-                # # 将p_values限制在0到1之间
-                p_values = torch.sigmoid(p_values)
-                p_values = torch.clamp(p_values, 0, 1)
+                # 缩放 pose_values 到 0 到 scale 的范围并保留三位小数
+                pose_values = torch.round(pose_values * (scale / pose_values.abs().max()) * 1000) / 1000
 
-                # # 可以选择将x_values, y_values, p_values重新组合到out中
-                out = torch.cat((x_values, y_values, p_values), dim=1)
-                predicted_pose = out[:, :, torch.arange(out.size(-1)) % 3 != 2]
-                target_pose = tgt_input['input_ids']
+                # 将 emo_values 映射到 0 到 1 的范围并保留三位小数
+                emo_values = torch.round(torch.sigmoid(emo_values) * 1000) / 1000
 
-                print('predicted_pose', predicted_pose.shape)
-                print('target_pose', target_pose.shape)
-                loss = criterion(predicted_pose, target_pose)
-                print('loss', loss)
+                # 合并 pose_values 和 emo_values
+                predicted = torch.cat((pose_values, emo_values), dim=-1)
+                print("predicted_shape:", predicted.shape)
+
+                reference = tgt_input['input_ids']
+                print('reference_shape:', reference.shape)
+
+                loss = criterion(predicted, reference)
+                print('loss: ', loss)
+
                 # 反向传播和梯度更新
                 scaler.scale(loss).backward()
 
                 # 梯度裁剪
-                print('here1')
                 torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
-
-                print('here')
                 scaler.step(optimizer)
                 scaler.update()
 
@@ -200,23 +268,61 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
     return epoch_loss
 
 
-def evaluate(model, dataloader, criterion, device):
-    model.eval()
-    running_loss = 0.0
+def evaluate(slp_model, val_model, dataloader, criterion, device, tokenizer):
+    slp_model.eval()
+    val_model.eval()
+    references = []
+    hypotheses = []
+    emo_scores = 0.0
     with torch.no_grad():
         for step, batch in enumerate(dataloader):
-            print('---step---: ', step)
+            print('---step---: ', step + 1)
             try:
                 src_input, tgt_input = batch
                 with autocast():
-                    out = model(src_input, tgt_input)
-                    print('val_out.shape', out.shape)
+                    kp_ids = slp_model(src_input, tgt_input)
+                    print('kp_ids_shape:', kp_ids.shape)
+                    step_emo_score = criterion(kp_ids[:, :, -1], tgt_input['input_ids'][:, :, -1])
+                    emo_scores += step_emo_score.item()
+
+                    vocab_logits = val_model(kp_ids, tgt_input['attention_mask'], src_input)
+                    print('vocab_logits_shape', vocab_logits.shape)
+                    print('---vocab_logits---:', vocab_logits)
                     # 计算评价指标
+                    hypotheses_batch = tokenizer.batch_decode(vocab_logits.argmax(dim=-1), skip_special_tokens=True)
+                    print(hypotheses_batch)
+                    references_batch = tokenizer.batch_decode(src_input['input_ids'], skip_special_tokens=True)
+
+                    # print(src_input['input_ids'])
+
+                    for hyp, ref in zip(hypotheses_batch, references_batch):
+                        if not hyp.strip():
+                            hyp = "<empty>"
+                        print('hyp: ', hyp)
+                        print('ref: ', ref)
+
+                        hyp = utils.remove_duplicates(hyp)
+                        ref = utils.remove_duplicates(ref)
+                        hypotheses.append(hyp)
+                        references.append(ref)
             except Exception as e:
                 print("数据错误，摒弃本数据。", e)
                 continue
 
-    return running_loss
+    emo_score = emo_scores / len(dataloader.dataset)
+
+    # 计算 BLEU 和 ROUGE 分数
+    bleu = BLEU().corpus_score(hypotheses, [references])
+    rouge = Rouge().get_scores(hypotheses, references, avg=True)
+
+    # 解析 BLEU 和 ROUGE 分数
+    bleu1 = bleu.precisions[0]
+    bleu2 = bleu.precisions[1]
+    bleu3 = bleu.precisions[2]
+    bleu4 = bleu.precisions[3]
+    rouge_l = rouge['rouge-l']['f']
+
+    return emo_score, bleu1, bleu2, bleu3, bleu4, rouge_l
 
 
 if __name__ == '__main__':

@@ -51,6 +51,7 @@ def process(src_path, res_path):
                 similarity = (frame_features @ text_features.T).softmax(dim=-1)  # 计算情感概率
 
             positive_prob = similarity[0, 0].item()  # 取出正向情感概率
+            positive_prob = round(positive_prob, 3)  # 保留三位小数
 
             # 添加情感概率到当前帧
             updated_frame = np.hstack([frame, [positive_prob]])

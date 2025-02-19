@@ -1,6 +1,6 @@
 # How2Sign数据集参数
 How2SignDataset:
-  keypoints_dir: ./data/How2Sign/keypoints/
+  keypoints_dir: ./data/How2Sign/res/
   train_label_path: ./data/How2Sign/dev.csv
   dev_label_path: ./data/How2Sign/dev.csv
   test_label_path: ./data/How2Sign/dev.csv
