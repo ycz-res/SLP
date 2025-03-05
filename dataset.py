@@ -44,6 +44,7 @@ class How2SignDataset(Dataset):
 
         # 将批序列的name、imgs、tgt分别包装成列表
         for src_sample, tgt_sample in batch:
+            # src_sample = '<pad>' + src_sample
             src_batch.append(src_sample)
             tgt_batch.append(tgt_sample)
 
