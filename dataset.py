@@ -5,8 +5,8 @@ from torch.utils.data import Dataset
 from augmentation import *
 
 
-# How2Sign数据集
-class How2SignDataset(Dataset):
+# P14TDataset数据集
+class P14TDataset(Dataset):
     def __init__(self, path, tokenizer, config, args, phase):
         self.dataset = utils.load_h2s_dataset(path)
 

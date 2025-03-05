@@ -15,7 +15,7 @@ from transformers import AutoTokenizer, MBartTokenizer
 from torch.utils.data import DataLoader
 from model_c import EmoGene, ValEmoGene
 # 动态调用引入 How2SignDataset
-from dataset import How2SignDataset
+from dataset import P14TDataset
 from timm.optim import create_optimizer
 from torch.optim import lr_scheduler as scheduler
 from torch.cuda.amp import GradScaler, autocast
@@ -64,7 +64,7 @@ def get_args_parser():
 
     a_parser.add_argument('--alpha', type=float, default=0.1, metavar='RATE')
 
-    a_parser.add_argument('--dataset', default='How2SignDataset', type=str,
+    a_parser.add_argument('--dataset', default='P14TDataset', type=str,
                           choices=['How2SignDataset', 'P14TDataset', 'CSLDailyDataset'])
 
     return a_parser
