@@ -16,7 +16,7 @@ def process(src_path, res_path):
     # 初始化 CLIP 模型和处理器
     model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
     # 模型输出适配 (模型维度、适配维度)
-    clip_output_transform = nn.Linear(512, 274)
+    clip_output_transform = nn.Linear(512, 54)
     processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
 
     # 定义情感倾向及其文本描述
@@ -59,7 +59,7 @@ def process(src_path, res_path):
 
         updated_keypoint_s = np.array(updated_keypoint_s)  # 转换为 NumPy 数组
         print('updated_keypoint_s.shape: ', updated_keypoint_s.shape)
-        print(updated_keypoint_s[0][274])
+        print(updated_keypoint_s[0][54])
 
         # 保存数据
         save_path = os.path.join(res_path, file.name)
@@ -69,4 +69,4 @@ def process(src_path, res_path):
 
 if __name__ == '__main__':
     # 处理前修改 src_path（待处理数据目录） 和 res_path（结果存放目录）
-    process('../keypoints', '../res')
+    process('../tgt', '../res')

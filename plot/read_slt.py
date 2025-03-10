@@ -1,7 +1,7 @@
 import re
 
 # 打开并读取文件
-file_path = 'slt.txt'  # 替换为你的文件路径
+file_path = 'res/slt.txt'  # 替换为你的文件路径
 with open(file_path, 'r', encoding='utf-8') as file:
     file_content = file.read()
 

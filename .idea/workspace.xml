@@ -4,24 +4,393 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="完善模型">
-      <change afterPath="$PROJECT_DIR$/checkpoints/best_model_c.pth" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/c.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/e.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/s.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="修改数据集处理">
+      <change afterPath="$PROJECT_DIR$/plot/dataAna.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plot/mae_three.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plot/mae_two.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plot/plot/res/plot_ll.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plot/plot/res/plot_lr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plot/plot/res/plot_nl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plot/res/slt.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plot/slt_1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plot/slt_2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/SLP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SLP.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/How2Sign/res/-d5dN54tH2E_0-1-rgb_front.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/How2Sign/res/-d5dN54tH2E_0-1-rgb_front.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/How2Sign/res/-d5dN54tH2E_1-1-rgb_front.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/How2Sign/res/-d5dN54tH2E_1-1-rgb_front.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/keypoints/-d5dN54tH2E_0-1-rgb_front.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/keypoints/-d5dN54tH2E_1-1-rgb_front.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/res/-d5dN54tH2E_0-1-rgb_front.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/res/-d5dN54tH2E_1-1-rgb_front.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000000_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000001_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000002_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000003_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000004_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000005_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000006_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000007_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000008_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000009_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000010_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000011_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000012_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000013_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000014_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000015_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000016_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000017_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000018_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000019_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000020_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000021_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000022_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000023_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000024_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000025_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000026_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000027_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000028_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000029_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000030_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000031_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000032_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000033_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000034_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000035_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000036_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000037_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000038_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000039_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000040_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000041_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000042_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000043_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000044_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000045_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000046_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000047_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000048_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000049_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000050_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000051_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000052_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000053_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000054_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000055_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000056_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000057_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000058_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000059_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000060_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000061_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000062_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000063_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000064_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000065_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000066_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000067_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000068_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000069_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000070_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000071_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000072_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000073_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000074_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000075_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000076_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000077_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000078_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000079_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000080_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000081_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000082_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000083_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000084_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000085_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000086_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000087_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000088_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000089_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000090_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000091_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000092_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000093_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000094_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000095_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000096_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000097_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000098_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000099_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000100_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000101_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000102_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000103_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000104_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000105_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000106_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000107_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000108_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000109_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000110_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000111_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000112_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000113_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000114_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000115_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000116_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000117_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000118_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000119_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000120_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000121_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000122_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000123_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000124_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000125_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000126_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000127_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000128_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000129_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000130_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000131_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000132_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000133_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000134_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000135_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000136_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000137_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000138_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000139_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000140_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000141_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000142_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000143_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000144_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000145_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000146_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000147_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000148_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000149_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000150_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000151_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000152_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000153_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000154_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000155_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-3-rgb_front/_2FBDaOPYig_2-3-rgb_front_000000000156_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000000_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000001_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000002_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000003_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000004_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000005_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000006_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000007_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000008_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000009_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000010_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000011_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000012_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000013_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000014_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000015_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000016_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000017_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000018_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000019_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000020_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000021_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000022_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000023_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000024_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000025_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000026_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000027_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000028_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000029_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000030_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000031_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000032_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000033_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000034_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000035_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000036_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000037_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000038_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000039_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000040_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000041_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000042_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000043_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000044_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000045_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000046_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000047_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000048_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000049_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000050_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000051_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000052_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000053_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000054_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000055_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000056_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000057_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000058_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000059_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000060_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000061_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000062_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000063_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000064_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000065_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000066_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000067_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000068_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000069_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000070_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000071_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000072_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000073_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000074_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000075_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000076_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000077_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000078_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000079_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000080_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000081_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000082_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000083_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000084_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000085_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000086_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000087_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000088_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000089_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000090_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000091_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000092_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000093_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000094_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000095_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000096_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000097_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000098_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000099_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000100_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000101_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000102_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000103_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000104_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000105_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000106_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000107_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000108_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000109_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000110_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000111_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000112_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000113_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000114_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000115_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000116_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000117_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000118_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000119_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000120_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000121_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000122_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000123_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000124_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000125_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000126_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000127_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000128_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000129_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000130_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000131_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000132_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000133_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000134_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000135_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000136_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000137_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000138_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000139_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000140_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000141_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000142_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000143_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000144_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000145_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000146_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000147_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000148_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000149_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000150_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000151_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000152_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000153_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000154_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000155_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000156_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000157_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000158_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000159_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000160_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000161_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000162_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000163_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000164_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000165_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000166_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000167_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000168_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000169_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000170_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000171_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000172_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000173_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000174_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000175_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000176_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000177_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000178_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000179_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000180_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000181_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000182_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000183_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000184_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000185_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000186_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000187_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000188_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000189_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000190_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000191_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000192_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000193_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000194_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000195_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000196_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000197_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000198_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000199_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000200_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000201_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000202_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000203_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000204_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000205_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000206_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000207_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000208_keypoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/How2Sign/src/_2FBDaOPYig_2-5-rgb_front/_2FBDaOPYig_2-5-rgb_front_000000000209_keypoints.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/How2Sign/tools/emo_ex_for_keypoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/How2Sign/tools/emo_ex_for_keypoints.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_c.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temp.py" beforeDir="false" afterPath="$PROJECT_DIR$/temp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_c.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plot/mae.py" beforeDir="false" afterPath="$PROJECT_DIR$/plot/mae.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plot/read_slt.py" beforeDir="false" afterPath="$PROJECT_DIR$/plot/read_slt.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +424,27 @@
     &quot;assignee&quot;: &quot;SoftpaseFar&quot;
   }
 }</component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1741176719" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;git@github.com:SoftpaseFar/SLP.git&quot;,
@@ -78,8 +468,20 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.dataAna.executor": "Run",
     "Python.emo_ex_for_keypoints.executor": "Run",
+    "Python.ex_kp.executor": "Run",
+    "Python.filter_files.executor": "Run",
+    "Python.formatting (1).executor": "Run",
+    "Python.formatting.executor": "Run",
+    "Python.gen_imgs.executor": "Run",
+    "Python.mae.executor": "Run",
+    "Python.mae_three.executor": "Run",
+    "Python.mae_two.executor": "Run",
     "Python.model_s.executor": "Run",
+    "Python.plot.executor": "Run",
+    "Python.plot_nl.executor": "Run",
+    "Python.read_slt.executor": "Run",
     "Python.train_c.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -87,7 +489,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/SapereAude/PycharmProjects/SLP/checkpoints",
+    "last_opened_file_path": "/Users/sapereaude/Documents/Projects/SLP/data/PH14T/label",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -99,21 +501,24 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/checkpoints" />
-      <recent name="$PROJECT_DIR$/data/How2Sign/keypoints" />
-      <recent name="$PROJECT_DIR$/data/How2Sign/utils" />
-      <recent name="$PROJECT_DIR$/data/How2Sign" />
-      <recent name="$PROJECT_DIR$/data/How2Sign/videos" />
+      <recent name="$PROJECT_DIR$/data/PH14T/label" />
+      <recent name="$PROJECT_DIR$/data/How2Sign/label" />
+      <recent name="$USER_HOME$/Desktop" />
+      <recent name="$PROJECT_DIR$/plot" />
+      <recent name="$USER_HOME$/Desktop/毕业论文/大论文图" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/How2Sign/label" />
+      <recent name="$PROJECT_DIR$/plot/res" />
       <recent name="$PROJECT_DIR$/data/How2Sign/src" />
       <recent name="$PROJECT_DIR$/data/How2Sign" />
       <recent name="$PROJECT_DIR$/data/How2Sign/utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.train_c">
+  <component name="RunManager" selected="Python.formatting (1)">
     <configuration name="emo_ex_for_keypoints" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SLP" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -134,20 +539,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="model_c" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="filter_files" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SLP" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data/How2Sign/tools" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/model_c.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/How2Sign/tools/filter_files.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -156,20 +562,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="temp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="formatting (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SLP" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data/PH14T/label" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/temp.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/PH14T/label/formatting.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -178,20 +585,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="train_c" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="formatting" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SLP" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data/How2Sign/label" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_c.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/How2Sign/label/formatting.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -200,20 +608,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="train_s" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="mae_three" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SLP" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/plot" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_s.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/plot/mae_three.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -222,13 +631,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.emo_ex_for_keypoints" />
+      <item itemvalue="Python.filter_files" />
+      <item itemvalue="Python.formatting" />
+      <item itemvalue="Python.formatting (1)" />
+      <item itemvalue="Python.mae_three" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.train_c" />
-        <item itemvalue="Python.model_c" />
+        <item itemvalue="Python.formatting (1)" />
+        <item itemvalue="Python.formatting" />
         <item itemvalue="Python.emo_ex_for_keypoints" />
-        <item itemvalue="Python.temp" />
-        <item itemvalue="Python.train_s" />
+        <item itemvalue="Python.filter_files" />
+        <item itemvalue="Python.mae_three" />
       </list>
     </recent_temporary>
   </component>
@@ -261,6 +677,9 @@
       <workItem from="1737858935764" duration="492000" />
       <workItem from="1737859433417" duration="17560000" />
       <workItem from="1738198170295" duration="66829000" />
+      <workItem from="1741223043012" duration="9000" />
+      <workItem from="1741223131062" duration="1532000" />
+      <workItem from="1741592487745" duration="13014000" />
     </task>
     <task id="LOCAL-00001" summary="完善 keypoints 情感挖掘预处理函数">
       <option name="closed" value="true" />
@@ -318,16 +737,28 @@
     <option name="LAST_COMMIT_MESSAGE" value="完善模型" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SLP$utils.coverage" NAME="utils Coverage Results" MODIFIED="1735010784478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SLP$model_c.coverage" NAME="model_c Coverage Results" MODIFIED="1739246555421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SLP$model.coverage" NAME="model Coverage Results" MODIFIED="1736568418647" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SLP$train_s.coverage" NAME="train_s Coverage Results" MODIFIED="1739117540339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SLP$emo_ex_for_keypoints.coverage" NAME="emo_ex_for_keypoints Coverage Results" MODIFIED="1739186757837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/How2Sign/tools" />
-    <SUITE FILE_PATH="coverage/SLP$model_e.coverage" NAME="model_e Coverage Results" MODIFIED="1739117514410" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLP$train_c.coverage" NAME="train_c Coverage Results" MODIFIED="1739250044671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLP$filter_files.coverage" NAME="filter_files Coverage Results" MODIFIED="1741603693834" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/How2Sign/tools" />
+    <SUITE FILE_PATH="coverage/SLP$emo_ex_for_keypoints.coverage" NAME="emo_ex_for_keypoints Coverage Results" MODIFIED="1741603916688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/How2Sign/tools" />
     <SUITE FILE_PATH="coverage/SLP$temp.coverage" NAME="temp Coverage Results" MODIFIED="1739182159582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLP$model_c.coverage" NAME="model_c Coverage Results" MODIFIED="1739246555421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLP$formatting__1_.coverage" NAME="formatting (1) Coverage Results" MODIFIED="1741610931101" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/PH14T/label" />
+    <SUITE FILE_PATH="coverage/SLP$gen_imgs.coverage" NAME="gen_imgs Coverage Results" MODIFIED="1741177953440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/plot" />
+    <SUITE FILE_PATH="coverage/SLP$ex_kp.coverage" NAME="ex_kp Coverage Results" MODIFIED="1741177941571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/plot" />
+    <SUITE FILE_PATH="coverage/SLP$model.coverage" NAME="model Coverage Results" MODIFIED="1736568418647" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLP$plot_nl.coverage" NAME="plot_nl Coverage Results" MODIFIED="1741223486813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/plot" />
+    <SUITE FILE_PATH="coverage/SLP$plot.coverage" NAME="plot Coverage Results" MODIFIED="1741178009975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/plot" />
+    <SUITE FILE_PATH="coverage/SLP$mae.coverage" NAME="mae Coverage Results" MODIFIED="1741194248554" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/plot" />
     <SUITE FILE_PATH="coverage/SLP$train.coverage" NAME="train Coverage Results" MODIFIED="1738847007521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLP$model_e.coverage" NAME="model_e Coverage Results" MODIFIED="1739117514410" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLP$train_s.coverage" NAME="train_s Coverage Results" MODIFIED="1739117540339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLP$utils.coverage" NAME="utils Coverage Results" MODIFIED="1735010784478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLP$dataAna.coverage" NAME="dataAna Coverage Results" MODIFIED="1741196700412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/plot" />
     <SUITE FILE_PATH="coverage/SLP$model_s.coverage" NAME="model_s Coverage Results" MODIFIED="1739064299927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SLP$test.coverage" NAME="preprocess Coverage Results" MODIFIED="1734753436587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/How2Sign/utils" />
-    <SUITE FILE_PATH="coverage/SLP$train_c.coverage" NAME="train_c Coverage Results" MODIFIED="1739250044671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLP$read_slt.coverage" NAME="read_slt Coverage Results" MODIFIED="1741192903377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/plot" />
+    <SUITE FILE_PATH="coverage/SLP$mae_three.coverage" NAME="mae_three Coverage Results" MODIFIED="1741597653752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/plot" />
+    <SUITE FILE_PATH="coverage/SLP$formatting.coverage" NAME="formatting Coverage Results" MODIFIED="1741607612170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/How2Sign/label" />
+    <SUITE FILE_PATH="coverage/SLP$mae_two.coverage" NAME="mae_two Coverage Results" MODIFIED="1741196708510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/plot" />
   </component>
 </project>
