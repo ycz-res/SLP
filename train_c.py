@@ -1,4 +1,4 @@
-import traceback
+# import traceback
 # 忽略警告---
 import warnings
 
@@ -31,7 +31,7 @@ def get_args_parser():
     a_parser.add_argument('--epochs', default=10, type=int)
     a_parser.add_argument('--num_workers', default=1, type=int)
     a_parser.add_argument('--config', type=str, default='./config.yaml')
-    a_parser.add_argument('--device', default='cpu')
+    a_parser.add_argument('--device', default='cuda')
     a_parser.add_argument('--seed', default=0, type=int)
     a_parser.add_argument('--checkpoints_dir', default='./checkpoints/')
     # 锁定内存
@@ -284,7 +284,7 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
 
         except Exception as e:
             print("数据错误，摒弃本数据。", e)
-            print(traceback.format_exc())  # 打印完整错误堆栈
+            # print(traceback.format_exc())  # 打印完整错误堆栈
             continue
 
     epoch_loss = running_loss / len(dataloader.dataset)
