@@ -124,7 +124,7 @@ class EmoGene(nn.Module):
         print('et_shape:', et.shape)
 
         # 位置编码
-        pos = self._gen_pos(tgt)
+        pos = self._gen_pos(tgt['input_ids'])
         print('pos_shape:', pos.shape)
 
         # 注意力
