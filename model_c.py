@@ -138,7 +138,8 @@ class EmoGene(nn.Module):
         ht, _, et = self.encoder(src)
         # L2 归一化，使向量范数变成 1
         ht = F.normalize(ht, p=2, dim=-1)  # 归一化 ht
-        et = F.normalize(et, p=2, dim=-1)  # 归一化 et
+        et = F.normalize(et, p=2, dim=-1, eps=1e-6)
+        # et = F.normalize(et, p=2, dim=-1)  # 归一化 et
         print('ht_shape:', ht.shape)
         print('ht:', ht)
         print('et_shape:', et.shape)
