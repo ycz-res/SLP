@@ -123,13 +123,15 @@ class EmoGene(nn.Module):
         print('ht_shape:', ht.shape)
         print('et_shape:', et.shape)
 
+
         # 位置编码
         pos = self._gen_pos(tgt['input_ids'])
         print('pos_shape:', pos.shape)
 
         # 注意力
-        Q = self.Wq(ht.unsqueeze(1).repeat(1, self.seq_length, 1))
-        K = self.Wk(ht.unsqueeze(1).repeat(1, self.seq_length, 1))
+        _, seq_len, _ = tgt['input_ids']
+        Q = self.Wq(ht.unsqueeze(1).repeat(1, seq_len, 1))
+        K = self.Wk(ht.unsqueeze(1).repeat(1, seq_len, 1))
 
         tgt = self.tgt_linear(tgt['input_ids'])
         print('tgt_embedding:', tgt.shape)
