@@ -39,7 +39,7 @@ class EncoderLayer(nn.Module):
         # ct_1_hidden
         ft = torch.sigmoid(self.Wf(concat) + self.bf)
         ct_1_hidden = ft * ct_1
-        print('ct_1_hidden:', ct_1_hidden)
+        # print('ct_1_hidden:', ct_1_hidden)
 
         Q = self.Wq(ct_1_hidden)
         K = self.Wk(concat)
@@ -51,6 +51,7 @@ class EncoderLayer(nn.Module):
 
         # 应用注意力权重到V
         attention_output = torch.matmul(attention_weights, V).squeeze(1)
+        print('attention_output', attention_output)
 
         # ut = torch.sigmoid(self.Wu(attention_output) + self.bu)
         ut = torch.sigmoid(self.Wu(attention_output) + self.bu)
