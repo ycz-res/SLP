@@ -84,7 +84,7 @@ class Encoder(nn.Module):
 
 # 姿态解码模型
 class EmoGene(nn.Module):
-    def __init__(self, src_dim=64, model_dim=64, tgt_dim=275, kp_nums=137,
+    def __init__(self, src_dim=64, model_dim=64, tgt_dim=109, kp_nums=54,
                  num_heads=2, num_layers=1, seq_length=156,
                  num_embeddings=250027):
         super(EmoGene, self).__init__()
@@ -179,7 +179,7 @@ class ValEmoGene(nn.Module):
         self.register_buffer("final_logits_bias", torch.zeros((1, self.MBart.model.shared.num_embeddings)))
 
         # 映射层
-        self.projector_275_54 = ProjectionLayer(input_dim=275, output_dim=54)
+        self.projector_275_54 = ProjectionLayer(input_dim=109, output_dim=54)
         self.projector_128_1024 = ProjectionLayer(input_dim=128, output_dim=1024)
 
     def forward(self, kp_ids, kp_mask, txt_input):

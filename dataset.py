@@ -5,8 +5,8 @@ from torch.utils.data import Dataset
 from augmentation import *
 
 
-# P14TDataset数据集
-class P14TDataset(Dataset):
+# 数据集
+class SLPDataset(Dataset):
     def __init__(self, path, tokenizer, config, args, phase):
         self.dataset = utils.load_h2s_dataset(path)
 
@@ -15,20 +15,20 @@ class P14TDataset(Dataset):
         self.args = args
         self.phase = phase
 
-        self.keypoints_dir = config[self.args['dataset']]['keypoints_dir']
+        self.kps_dir = config[self.args['dataset']]['kps_dir']
         self.max_length = config[self.args['dataset']]['max_length']
 
     def __getitem__(self, idx):
         sample = self.dataset[idx]
 
-        src_sample = sample['text']
-        keypoints_name = sample['keypoints_name']
+        src_sample = sample['SENTENCE']
+        kp_file_name = sample['FILE_NAME']
 
-        tgt_sample = self._load_keypoints(os.path.join(self.keypoints_dir, keypoints_name))
+        tgt_sample = self._load_kps(os.path.join(self.kps_dir, kp_file_name,'.json'))
         # print(tgt_sample.dtype)
         return src_sample, tgt_sample
 
-    def _load_keypoints(self, path):
+    def _load_kps(self, path):
         data = utils.load_json(path)
         # 如果关键点向量数量超过最大长度，随机抽取最大长度的关键点向量，并保持顺序
         if len(data) > self.max_length:
@@ -42,7 +42,7 @@ class P14TDataset(Dataset):
         print(f"loading {self.args['dataset']} ...")
         src_batch, tgt_batch = [], []
 
-        # 将批序列的name、imgs、tgt分别包装成列表
+        # 将批序列的name、tgt分别包装成列表
         for src_sample, tgt_sample in batch:
             # src_sample = '<pad>' + src_sample
             src_batch.append(src_sample)

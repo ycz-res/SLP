@@ -15,7 +15,7 @@ from transformers import AutoTokenizer, MBartTokenizer
 from torch.utils.data import DataLoader
 from model_c import EmoGene, ValEmoGene
 # 动态调用引入 How2SignDataset
-from dataset import P14TDataset
+from dataset import SLPDataset
 from timm.optim import create_optimizer
 from torch.optim import lr_scheduler as scheduler
 from torch.cuda.amp import GradScaler, autocast
@@ -64,8 +64,8 @@ def get_args_parser():
 
     a_parser.add_argument('--alpha', type=float, default=0.1, metavar='RATE')
 
-    a_parser.add_argument('--dataset', default='P14TDataset', type=str,
-                          choices=['How2SignDataset', 'P14TDataset', 'CSLDailyDataset'])
+    a_parser.add_argument('--dataset', default='P2SASLDataset', type=str,
+                          choices=['P2SASLDataset', 'PH14TDataset'])
 
     return a_parser
 
@@ -96,11 +96,11 @@ def main(args_, config):
 
     # 加载训练数据集
     # 训练数据集
-    train_data = eval(args['dataset'])(path=config[args['dataset']]['train_label_path'],
-                                       tokenizer=tokenizer,
-                                       config=config,
-                                       args=args,
-                                       phase='train')
+    train_data = SLPDataset(path=config[args['dataset']]['train_label_path'],
+                            tokenizer=tokenizer,
+                            config=config,
+                            args=args,
+                            phase='train')
     train_dataloader = DataLoader(train_data,
                                   batch_size=args['batch_size'],
                                   num_workers=args['num_workers'],
@@ -109,17 +109,30 @@ def main(args_, config):
                                   drop_last=True)
 
     # 验证数据集
-    val_data = eval(args['dataset'])(path=config[args['dataset']]['dev_label_path'],
-                                     tokenizer=tokenizer,
-                                     config=config,
-                                     args=args,
-                                     phase='val')
+    val_data = SLPDataset(path=config[args['dataset']]['dev_label_path'],
+                          tokenizer=tokenizer,
+                          config=config,
+                          args=args,
+                          phase='val')
     val_dataloader = DataLoader(val_data,
                                 batch_size=args['batch_size'],
                                 num_workers=args['num_workers'],
                                 collate_fn=val_data.collate_fn,
                                 pin_memory=args['pin_mem'],
                                 drop_last=True)
+
+    # 测试数据集
+    test_data = SLPDataset(path=config[args['dataset']]['test_label_path'],
+                           tokenizer=tokenizer,
+                           config=config,
+                           args=args,
+                           phase='test')
+    test_dataloader = DataLoader(test_data,
+                                 batch_size=args['batch_size'],
+                                 num_workers=args['num_workers'],
+                                 collate_fn=test_data.collate_fn,
+                                 pin_memory=args['pin_mem'],
+                                 drop_last=True)
 
     # SLP Model
     slp_model = EmoGene()

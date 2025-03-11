@@ -1,7 +1,15 @@
-# How2Sign数据集参数
-How2SignDataset:
-  keypoints_dir: ./data/How2Sign/res/
-  train_label_path: ./data/How2Sign/dev.csv
-  dev_label_path: ./data/How2Sign/dev.csv
-  test_label_path: ./data/How2Sign/dev.csv
+# P2SASLDataset 数据集参数
+P2SASLDataset:
+  keypoints_dir: ./data/P2SASL/kps/
+  train_label_path: ./data/P2SASL/train.csv
+  dev_label_path: ./data/P2SASL/dev.csv
+  test_label_path: ./data/P2SASL/test.csv
+  max_length: 156
+
+# PH14TDataset 数据集参数
+PH14TDataset:
+  kps_dir: ./data/PH14T/kps/
+  train_label_path: ./data/PH14T/train.csv
+  dev_label_path: ./data/PH14T/dev.csv
+  test_label_path: ./data/PH14T/test.csv
   max_length: 156
