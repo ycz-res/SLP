@@ -129,7 +129,7 @@ class EmoGene(nn.Module):
         print('pos_shape:', pos.shape)
 
         # 注意力
-        _, seq_len, _ = tgt['input_ids']
+        _, seq_len, _ = tgt['input_ids'].size()
         Q = self.Wq(ht.unsqueeze(1).repeat(1, seq_len, 1))
         K = self.Wk(ht.unsqueeze(1).repeat(1, seq_len, 1))
 
