@@ -249,11 +249,12 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
 
                 # 分离 pose_values 和 emo_values
                 pose_values, emo_values = out.split([54, 1], dim=-1)
-                print('pose_values:', pose_values)
-                print('emo_values:', emo_values)
+
 
                 pose_values = torch.sigmoid(pose_values) * 10
                 emo_values = torch.sigmoid(emo_values)
+                print('pose_values:', pose_values)
+                print('emo_values:', emo_values)
 
                 # 缩放 pose_values 到 0 到 scale 的范围并保留三位小数
                 # pose_values = torch.round(pose_values * (scale / pose_values.abs().max()) * 1000) / 1000

@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="print">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_c.py" afterDir="false" />
-    </list>
+    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="torch.sigmoid(pose_values) * 10" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -298,7 +295,7 @@
       <workItem from="1741592487745" duration="15528000" />
       <workItem from="1741653418259" duration="2672000" />
       <workItem from="1741657588424" duration="397000" />
-      <workItem from="1741658269472" duration="17011000" />
+      <workItem from="1741658269472" duration="17321000" />
     </task>
     <task id="LOCAL-00001" summary="完善 keypoints 情感挖掘预处理函数">
       <option name="closed" value="true" />
@@ -556,7 +553,23 @@
       <option name="project" value="LOCAL" />
       <updated>1741680808184</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="pose_values">
+      <option name="closed" value="true" />
+      <created>1741682397508</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1741682397508</updated>
+    </task>
+    <task id="LOCAL-00034" summary="torch.sigmoid(pose_values) * 10">
+      <option name="closed" value="true" />
+      <created>1741682687547</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1741682687547</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -596,7 +609,9 @@
     <MESSAGE value="把数据移动到 device" />
     <MESSAGE value="print('reference:', reference)" />
     <MESSAGE value="print" />
-    <option name="LAST_COMMIT_MESSAGE" value="print" />
+    <MESSAGE value="pose_values" />
+    <MESSAGE value="torch.sigmoid(pose_values) * 10" />
+    <option name="LAST_COMMIT_MESSAGE" value="torch.sigmoid(pose_values) * 10" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SLP$train_c.coverage" NAME="train_c Coverage Results" MODIFIED="1739250044671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
