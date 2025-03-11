@@ -108,6 +108,12 @@ class EmoGene(nn.Module):
 
         self.mha = nn.MultiheadAttention(embed_dim=model_dim, num_heads=num_heads)
 
+    def _gen_pos(self, tgt):
+        batch_size, seq_len, _ = tgt.size()
+        position_indices = torch.arange(seq_len, device=tgt.device).unsqueeze(0).expand(batch_size, -1)
+        pos = self.position_embedding(position_indices)
+        return pos
+
     def forward(self, src, tgt):
         # 获取 ht、et
         src = self.src_embedding(src['input_ids'])
@@ -118,10 +124,7 @@ class EmoGene(nn.Module):
         print('et_shape:', et.shape)
 
         # 位置编码
-        position_indices = torch.arange(self.seq_length).unsqueeze(0).expand(tgt['input_ids'].size(0),
-                                                                             -1)  # 形状为 [2, 156]
-
-        pos = self.position_embedding(position_indices)  # 形状为 [2, 156, 64]
+        pos = self._gen_pos(tgt)
         print('pos_shape:', pos.shape)
 
         # 注意力
