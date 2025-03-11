@@ -129,6 +129,7 @@ class EmoGene(nn.Module):
         K = self.Wk(ht.unsqueeze(1).repeat(1, self.seq_length, 1))
 
         tgt = self.tgt_linear(tgt['input_ids'])
+        print('tgt_embedding:', tgt.shape)
         et_expanded = et.unsqueeze(1)
         V = tgt + et_expanded + pos
         V = self.Wv(V)
