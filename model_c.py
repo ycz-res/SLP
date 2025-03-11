@@ -79,9 +79,9 @@ class Encoder(nn.Module):
         batch_size, seq_length, _ = src.size()
         ht_prev = torch.zeros(batch_size, self.hidden_size).to(src.device)
         ct_prev = torch.zeros(batch_size, self.hidden_size).to(src.device)
-        et_prev = torch.zeros(batch_size, self.hidden_size).to(src.device)
+        # et_prev = torch.zeros(batch_size, self.hidden_size).to(src.device)
         # et_prev = torch.randn(batch_size, self.hidden_size).to(src.device) * 0.01
-        # et_prev = torch.randn(batch_size, self.hidden_size).to(src.device) * 0.1
+        et_prev = torch.randn(batch_size, self.hidden_size).to(src.device) * 0.1
 
         for t in range(seq_length):
             xt = src[:, t, :]
