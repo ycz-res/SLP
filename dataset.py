@@ -24,7 +24,11 @@ class SLPDataset(Dataset):
         src_sample = sample['text']
         kp_file = sample['kp_file']
 
-        tgt_sample = self._load_kps(os.path.join(self.kps_dir, kp_file))
+        try:
+            tgt_sample = self._load_kps(os.path.join(self.kps_dir, kp_file))
+        except Exception:
+            print("json不存在，设置为默认值.")
+            tgt_sample = torch.zeros(156, 55, dtype=torch.float)
         # print(tgt_sample.dtype)
         return src_sample, tgt_sample
 
