@@ -278,6 +278,7 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
             print('test-1')
             torch.autograd.set_detect_anomaly(True)
             loss = torch.clamp(loss, max=10.0)  # 防止梯度爆炸
+            print('loss: ', loss)
             print('test0')
             scaler.scale(loss).backward()
             print('test1')
