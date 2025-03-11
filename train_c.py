@@ -1,3 +1,4 @@
+import traceback
 # 忽略警告---
 import warnings
 
@@ -283,6 +284,7 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
 
         except Exception as e:
             print("数据错误，摒弃本数据。", e)
+            print(traceback.format_exc())  # 打印完整错误堆栈
             continue
 
     epoch_loss = running_loss / len(dataloader.dataset)
