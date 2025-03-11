@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="sigmoid">
+    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="优化参数初始化">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_c.py" afterDir="false" />
     </list>
@@ -300,7 +300,7 @@
       <workItem from="1741657588424" duration="397000" />
       <workItem from="1741658269472" duration="20892000" />
       <workItem from="1741690252685" duration="834000" />
-      <workItem from="1741691093745" duration="4987000" />
+      <workItem from="1741691093745" duration="5703000" />
     </task>
     <task id="LOCAL-00001" summary="完善 keypoints 情感挖掘预处理函数">
       <option name="closed" value="true" />
@@ -598,7 +598,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741696583970</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="优化参数初始化">
+      <option name="closed" value="true" />
+      <created>1741700571729</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1741700571729</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -641,7 +649,8 @@
     <MESSAGE value="pose_values" />
     <MESSAGE value="torch.sigmoid(pose_values) * 10" />
     <MESSAGE value="sigmoid" />
-    <option name="LAST_COMMIT_MESSAGE" value="sigmoid" />
+    <MESSAGE value="优化参数初始化" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化参数初始化" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SLP$train_c.coverage" NAME="train_c Coverage Results" MODIFIED="1739250044671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

@@ -13,26 +13,24 @@ class EncoderLayer(nn.Module):
         self.hidden_size = hidden_size
 
         # 过滤门
-        # self.Wf = nn.Linear(input_size + hidden_size, hidden_size)
-        # 线性层使用 Xavier 初始化（适合 sigmoid/tanh）
-        self.Wf = nn.init.xavier_uniform_(self.Wf.weight)
-        # self.bf = nn.Parameter(torch.randn(hidden_size))
-        # 偏置初始化为 0（避免初始阶段引入过大偏置）
-        self.bf = nn.init.zeros_(self.bf)
+        self.Wf = nn.Linear(input_size + hidden_size, hidden_size)
+        self.bf = nn.Parameter(torch.randn(hidden_size))
 
         # 注意力
-        # self.Wq = nn.Linear(hidden_size, hidden_size)
-        self.Wq = nn.init.xavier_uniform_(self.Wq.weight)
-        # self.Wk = nn.Linear(input_size + hidden_size, hidden_size)
-        self.Wk = nn.init.xavier_uniform_(self.Wk.weight)
-        # self.Wv = nn.Linear(input_size + hidden_size, hidden_size)
-        self.Wv = nn.init.xavier_uniform_(self.Wv.weight)
+        self.Wq = nn.Linear(hidden_size, hidden_size)
+        self.Wk = nn.Linear(input_size + hidden_size, hidden_size)
+        self.Wv = nn.Linear(input_size + hidden_size, hidden_size)
 
         # 更新门
-        # self.Wu = nn.Linear(hidden_size, hidden_size)
-        self.Wu = nn.init.xavier_uniform_(self.Wu.weight)
-        # self.bu = nn.Parameter(torch.randn(hidden_size))
-        self.bu = nn.init.zeros_(self.bu)
+        self.Wu = nn.Linear(hidden_size, hidden_size)
+        self.bu = nn.Parameter(torch.randn(hidden_size))
+
+        # 初始化
+        nn.init.xavier_uniform_(self.Wf.weight)
+        nn.init.xavier_uniform_(self.Wq.weight)
+        nn.init.xavier_uniform_(self.Wk.weight)
+        nn.init.xavier_uniform_(self.Wv.weight)
+        nn.init.xavier_uniform_(self.Wu.weight)
 
     def forward(self, xt, ht_1, ct_1, et_1):
         # concat
@@ -107,16 +105,14 @@ class EmoGene(nn.Module):
 
         self.encoder = Encoder(hidden_size=model_dim, num_layers=num_layers)
         # 注意力
-        # self.Wq = nn.Linear(model_dim, model_dim)
-        self.Wq = nn.init.xavier_uniform_(self.Wq.weight)
-        # self.Wk = nn.Linear(model_dim, model_dim)
-        self.Wk = nn.init.xavier_uniform_(self.Wk.weight)
-        # self.Wv = nn.Linear(model_dim, model_dim)
-        self.Wv = nn.init.xavier_uniform_(self.Wv.weight)
+        self.Wq = nn.Linear(model_dim, model_dim)
+        self.Wk = nn.Linear(model_dim, model_dim)
+        self.Wv = nn.Linear(model_dim, model_dim)
 
-        self.bq = nn.init.zeros_(self.Wq.bias)
-        self.bk = nn.init.zeros_(self.Wk.bias)
-        self.bv = nn.init.zeros_(self.Wv.bias)
+        # 初始化
+        nn.init.xavier_uniform_(self.Wq.weight)
+        nn.init.xavier_uniform_(self.Wk.weight)
+        nn.init.xavier_uniform_(self.Wv.weight)
 
         # 输入
         self.src_linear = nn.Linear(src_dim, model_dim)
@@ -151,14 +147,14 @@ class EmoGene(nn.Module):
 
         # 注意力
         _, seq_len, _ = tgt['input_ids'].size()
-        Q = self.Wq(ht.unsqueeze(1).repeat(1, seq_len, 1)) + self.bq
-        K = self.Wk(ht.unsqueeze(1).repeat(1, seq_len, 1)) + self.bk
+        Q = self.Wq(ht.unsqueeze(1).repeat(1, seq_len, 1))
+        K = self.Wk(ht.unsqueeze(1).repeat(1, seq_len, 1))
 
         tgt = self.tgt_linear(tgt['input_ids'])
         print('tgt_embedding:', tgt.shape)
         et_expanded = et.unsqueeze(1)
         V = tgt + et_expanded + pos
-        V = self.Wv(V) + self.bv
+        V = self.Wv(V)
         print('Q_shape:', Q.shape)
         print('K_shape:', K.shape)
         print('V_shape:', V.shape)
@@ -177,13 +173,12 @@ class ProjectionLayer(nn.Module):
         self.projection = nn.Sequential(
             # nn.ReLU(),  # 非线性激活
             nn.Linear(input_dim, 512),
-            # 避免梯度消失
             nn.ReLU(),
             nn.Linear(512, output_dim),
             # nn.ReLU()  # 非线性激活
         )
 
-        # 初始化线性层
+        # 初始化
         for layer in self.projection:
             if isinstance(layer, nn.Linear):
                 nn.init.xavier_uniform_(layer.weight)
