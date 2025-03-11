@@ -76,7 +76,7 @@ class Encoder(nn.Module):
         batch_size, seq_length, _ = src.size()
         ht_prev = torch.zeros(batch_size, self.hidden_size).to(src.device)
         ct_prev = torch.zeros(batch_size, self.hidden_size).to(src.device)
-        et_prev = torch.randn(batch_size, self.hidden_size).to(src.device)
+        et_prev = torch.zeros(batch_size, self.hidden_size).to(src.device)
         # et_prev = torch.randn(batch_size, self.hidden_size).to(src.device) * 0.01
         # et_prev = torch.randn(batch_size, self.hidden_size).to(src.device) * 0.1
 
@@ -138,15 +138,17 @@ class EmoGene(nn.Module):
         print('src_embedding:', src.shape)
 
         ht, _, et = self.encoder(src)
+        print('ht:', ht)
+        print('et:', et)
         # L2 归一化，使向量范数变成 1
         ht = F.normalize(ht, p=2, dim=-1)  # 归一化 ht
         # et = F.normalize(et, p=2, dim=-1, eps=1e-6)
         et = F.normalize(et + 1e-6, p=2, dim=-1)
         # et = F.normalize(et, p=2, dim=-1)  # 归一化 et
         print('ht_shape:', ht.shape)
-        print('ht:', ht)
+
         print('et_shape:', et.shape)
-        print('et:', et)
+
 
         # 位置编码
         pos = self._gen_pos(tgt['input_ids'])
