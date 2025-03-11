@@ -263,6 +263,7 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
                 print('loss: ', loss)
 
             # 反向传播和梯度更新
+            loss = torch.clamp(loss, max=10.0)  # 防止梯度爆炸
             scaler.scale(loss).backward()
             print('test1')
 
