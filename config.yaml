@@ -1,6 +1,6 @@
 # P2SASLDataset 数据集参数
 P2SASLDataset:
-  keypoints_dir: ./data/P2SASL/kps/
+  kps_dir: ./data/P2SASL/kps/
   train_label_path: ./data/P2SASL/train.csv
   dev_label_path: ./data/P2SASL/dev.csv
   test_label_path: ./data/P2SASL/test.csv
