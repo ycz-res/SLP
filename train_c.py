@@ -26,8 +26,8 @@ from rouge import Rouge
 
 def get_args_parser():
     a_parser = argparse.ArgumentParser('SLP scripts', add_help=False)
-    a_parser.add_argument('--batch_size', default=1, type=int)
-    a_parser.add_argument('--epochs', default=10, type=int)
+    a_parser.add_argument('--batch_size', default=2, type=int)
+    a_parser.add_argument('--epochs', default=100, type=int)
     a_parser.add_argument('--num_workers', default=1, type=int)
     a_parser.add_argument('--config', type=str, default='./config.yaml')
     a_parser.add_argument('--device', default='cpu')
@@ -262,16 +262,16 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
                 loss = criterion(predicted, reference)
                 print('loss: ', loss)
 
-                # 反向传播和梯度更新
-                scaler.scale(loss).backward()
+            # 反向传播和梯度更新
+            scaler.scale(loss).backward()
 
-                # 梯度裁剪
-                torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
-                scaler.step(optimizer)
-                scaler.update()
+            # 梯度裁剪
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+            scaler.step(optimizer)
+            scaler.update()
 
-                # 计算损失
-                running_loss += loss.item() * src_input['input_ids'].size(0)
+            # 计算损失
+            running_loss += loss.item() * src_input['input_ids'].size(0)
 
         except Exception as e:
             print("数据错误，摒弃本数据。", e)
@@ -300,7 +300,7 @@ def evaluate(slp_model, val_model, dataloader, criterion, device, tokenizer):
 
                     vocab_logits = val_model(kp_ids, tgt_input['attention_mask'], src_input)
                     print('vocab_logits_shape', vocab_logits.shape)
-                    print('---vocab_logits---:', vocab_logits)
+                    # print('---vocab_logits---:', vocab_logits)
                     # 计算评价指标
                     hypotheses_batch = tokenizer.batch_decode(vocab_logits.argmax(dim=-1), skip_special_tokens=True)
                     print(hypotheses_batch)
