@@ -93,10 +93,6 @@ class SLPDataset(Dataset):
         # print(tgt_input['attention_mask'])
 
         # 返回一个batch视频集合 目标翻译的文本
-
-        # 把数据移动到 GPU
-        src_input = {key: value.to(self.args['device']) for key, value in src_input.items()}
-        tgt_input = {key: value.to(self.args['device']) for key, value in tgt_input.items()}
         return src_input, tgt_input
 
     def __len__(self):

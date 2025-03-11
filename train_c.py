@@ -239,6 +239,9 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
             print('src_ids:', src_input['input_ids'].size())
             print('tgt_ids:', tgt_input['input_ids'].size())
             with autocast():
+                # 把数据移动到 device
+                src_input = {key: value.to(args['device']) for key, value in src_input.items()}
+                tgt_input = {key: value.to(args['device']) for key, value in tgt_input.items()}
                 out = model(src_input, tgt_input)
 
                 # 映射
