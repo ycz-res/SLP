@@ -21,10 +21,10 @@ class SLPDataset(Dataset):
     def __getitem__(self, idx):
         sample = self.dataset[idx]
 
-        src_sample = sample['SENTENCE']
-        kp_file_name = sample['FILE_NAME']
+        src_sample = sample['text']
+        kp_file = sample['kp_file']
 
-        tgt_sample = self._load_kps(os.path.join(self.kps_dir, kp_file_name,'.json'))
+        tgt_sample = self._load_kps(os.path.join(self.kps_dir, kp_file))
         # print(tgt_sample.dtype)
         return src_sample, tgt_sample
 

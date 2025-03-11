@@ -43,7 +43,7 @@ def load_h2s_dataset(path):
     data_raws = pd.read_csv(path, sep='\t')
     res = [{
         'text': row['SENTENCE'],
-        'keypoints_name': '' + row['SENTENCE_NAME'] + '.json'
+        'kp_file': '' + row['FILE_NAME'] + '.json'
     } for _, row in data_raws.iterrows()]
 
     return res
