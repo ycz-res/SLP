@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="torch.sigmoid(pose_values) * 10">
+    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="sigmoid">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_c.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_c.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -298,7 +298,9 @@
       <workItem from="1741592487745" duration="15528000" />
       <workItem from="1741653418259" duration="2672000" />
       <workItem from="1741657588424" duration="397000" />
-      <workItem from="1741658269472" duration="18194000" />
+      <workItem from="1741658269472" duration="20892000" />
+      <workItem from="1741690252685" duration="834000" />
+      <workItem from="1741691093745" duration="2912000" />
     </task>
     <task id="LOCAL-00001" summary="完善 keypoints 情感挖掘预处理函数">
       <option name="closed" value="true" />
@@ -580,7 +582,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741682861761</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="sigmoid">
+      <option name="closed" value="true" />
+      <created>1741683697007</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1741683697007</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -622,7 +632,8 @@
     <MESSAGE value="print" />
     <MESSAGE value="pose_values" />
     <MESSAGE value="torch.sigmoid(pose_values) * 10" />
-    <option name="LAST_COMMIT_MESSAGE" value="torch.sigmoid(pose_values) * 10" />
+    <MESSAGE value="sigmoid" />
+    <option name="LAST_COMMIT_MESSAGE" value="sigmoid" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SLP$train_c.coverage" NAME="train_c Coverage Results" MODIFIED="1739250044671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

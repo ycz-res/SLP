@@ -48,6 +48,8 @@ class EncoderLayer(nn.Module):
         et = ut * et_1
 
         ct = ct_1_hidden + attention_output
+        print('---ct---', ct)
+        print('---et---', et)
         ht = attention_output
 
         return ht, ct, et
