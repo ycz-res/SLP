@@ -51,10 +51,11 @@ class EncoderLayer(nn.Module):
 
         # 应用注意力权重到V
         attention_output = torch.matmul(attention_weights, V).squeeze(1)
-        print('attention_output', attention_output)
+        # print('attention_output', attention_output)
 
         # ut = torch.sigmoid(self.Wu(attention_output) + self.bu)
         ut = torch.sigmoid(self.Wu(attention_output) + self.bu)
+        print('ut', ut)
         et = ut * et_1
 
         ct = ct_1_hidden + attention_output
