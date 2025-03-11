@@ -51,7 +51,8 @@ class EncoderLayer(nn.Module):
         # 应用注意力权重到V
         attention_output = torch.matmul(attention_weights, V).squeeze(1)
 
-        ut = torch.sigmoid(self.Wu(attention_output) + self.bu)
+        # ut = torch.sigmoid(self.Wu(attention_output) + self.bu)
+        ut = torch.sigmoid(self.Wu(attention_output) + self.bu) + 0.1
         et = ut * et_1
 
         ct = ct_1_hidden + attention_output
@@ -76,7 +77,8 @@ class Encoder(nn.Module):
         ht_prev = torch.zeros(batch_size, self.hidden_size).to(src.device)
         ct_prev = torch.zeros(batch_size, self.hidden_size).to(src.device)
         # et_prev = torch.zeros(batch_size, self.hidden_size).to(src.device)
-        et_prev = torch.randn(batch_size, self.hidden_size).to(src.device) * 0.01
+        # et_prev = torch.randn(batch_size, self.hidden_size).to(src.device) * 0.01
+        et_prev = torch.randn(batch_size, self.hidden_size).to(src.device) * 0.1
 
         for t in range(seq_length):
             xt = src[:, t, :]
@@ -138,7 +140,8 @@ class EmoGene(nn.Module):
         ht, _, et = self.encoder(src)
         # L2 归一化，使向量范数变成 1
         ht = F.normalize(ht, p=2, dim=-1)  # 归一化 ht
-        et = F.normalize(et, p=2, dim=-1, eps=1e-6)
+        # et = F.normalize(et, p=2, dim=-1, eps=1e-6)
+        et = F.normalize(et + 1e-6, p=2, dim=-1)
         # et = F.normalize(et, p=2, dim=-1)  # 归一化 et
         print('ht_shape:', ht.shape)
         print('ht:', ht)
