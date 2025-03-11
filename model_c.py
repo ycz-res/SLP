@@ -39,6 +39,7 @@ class EncoderLayer(nn.Module):
         # ct_1_hidden
         ft = torch.sigmoid(self.Wf(concat) + self.bf)
         ct_1_hidden = ft * ct_1
+        print('ct_1_hidden:', ct_1_hidden)
 
         Q = self.Wq(ct_1_hidden)
         K = self.Wk(concat)
@@ -138,8 +139,8 @@ class EmoGene(nn.Module):
         print('src_embedding:', src.shape)
 
         ht, _, et = self.encoder(src)
-        print('ht:', ht)
-        print('et:', et)
+        # print('ht:', ht)
+        # print('et:', et)
         # L2 归一化，使向量范数变成 1
         ht = F.normalize(ht, p=2, dim=-1)  # 归一化 ht
         # et = F.normalize(et, p=2, dim=-1, eps=1e-6)
@@ -148,7 +149,6 @@ class EmoGene(nn.Module):
         print('ht_shape:', ht.shape)
 
         print('et_shape:', et.shape)
-
 
         # 位置编码
         pos = self._gen_pos(tgt['input_ids'])
