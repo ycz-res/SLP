@@ -121,12 +121,14 @@ class EmoGene(nn.Module):
         print('src_embedding:', src.shape)
         ht, _, et = self.encoder(src)
         print('ht_shape:', ht.shape)
+        print('ht:', ht)
         print('et_shape:', et.shape)
-
+        print('et:', et)
 
         # 位置编码
         pos = self._gen_pos(tgt['input_ids'])
         print('pos_shape:', pos.shape)
+        print('pos:', pos)
 
         # 注意力
         _, seq_len, _ = tgt['input_ids'].size()
@@ -144,6 +146,7 @@ class EmoGene(nn.Module):
         out, _ = self.mha(Q, K, V)
         out = self.output_linear(out)
         print('out.shape:', out.size())
+        print('out:', out)
         return out
 
 
