@@ -262,12 +262,15 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
 
                 reference = tgt_input['input_ids']
                 print('reference_shape:', reference.shape)
+                print('predicted:',predicted)
+                print('reference:', reference)
 
                 loss = criterion(predicted, reference)
                 print('loss: ', loss)
 
             # 反向传播和梯度更新
             print('test-1')
+            torch.autograd.set_detect_anomaly(True)
             loss = torch.clamp(loss, max=10.0)  # 防止梯度爆炸
             print('test0')
             scaler.scale(loss).backward()
