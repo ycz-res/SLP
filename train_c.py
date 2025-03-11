@@ -264,14 +264,19 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
 
             # 反向传播和梯度更新
             scaler.scale(loss).backward()
+            print('test1')
 
             # 梯度裁剪
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+            print('test2')
             scaler.step(optimizer)
+            print('test3')
             scaler.update()
+            print('test4')
 
             # 计算损失
             running_loss += loss.item() * src_input['input_ids'].size(0)
+            print('test5')
 
         except Exception as e:
             print("数据错误，摒弃本数据。", e)
