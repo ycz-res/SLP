@@ -298,6 +298,8 @@ def evaluate(slp_model, val_model, dataloader, criterion, device, tokenizer):
             print('---step---: ', step + 1)
             try:
                 src_input, tgt_input = batch
+                src_input = {key: value.to(device) for key, value in src_input.items()}
+                tgt_input = {key: value.to(device) for key, value in tgt_input.items()}
                 with autocast():
                     kp_ids = slp_model(src_input, tgt_input)
                     print('kp_ids_shape:', kp_ids.shape)
