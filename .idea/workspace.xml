@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="print">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="normalize&amp;print">
       <change beforePath="$PROJECT_DIR$/model_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_c.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -300,15 +299,7 @@
       <workItem from="1741657588424" duration="397000" />
       <workItem from="1741658269472" duration="20892000" />
       <workItem from="1741690252685" duration="834000" />
-      <workItem from="1741691093745" duration="23589000" />
-    </task>
-    <task id="LOCAL-00022" summary="test5">
-      <option name="closed" value="true" />
-      <created>1741677156738</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1741677156738</updated>
+      <workItem from="1741691093745" duration="23975000" />
     </task>
     <task id="LOCAL-00023" summary="clamp(loss, max=10.0)">
       <option name="closed" value="true" />
@@ -694,7 +685,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741745711160</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="normalize&amp;print">
+      <option name="closed" value="true" />
+      <created>1741746251499</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1741746251499</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -713,7 +712,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="seq_len" />
     <MESSAGE value="_load_kps" />
     <MESSAGE value="train_c" />
     <MESSAGE value="test5" />
@@ -738,7 +736,8 @@
     <MESSAGE value="out * 100" />
     <MESSAGE value="self.output_linear(out) * 100" />
     <MESSAGE value="print" />
-    <option name="LAST_COMMIT_MESSAGE" value="print" />
+    <MESSAGE value="normalize&amp;print" />
+    <option name="LAST_COMMIT_MESSAGE" value="normalize&amp;print" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SLP$train_c.coverage" NAME="train_c Coverage Results" MODIFIED="1739250044671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

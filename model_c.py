@@ -199,6 +199,9 @@ class EmoGene(nn.Module):
         out[:, :, idx_0_1] = (out[:, :, idx_0_1] - out_min_0_1) / (out_max_0_1 - out_min_0_1)
         # out[:, :, idx_0_1] = out[:, :, idx_0_1] * (1 - 0) + 0
         print('out:', out)
+        print('out[]', out[:, :, 0:2])
+        print('out[]', out[:, :, 3:5])
+        print('out[]', out[:, :, -3:-1])
         return out
 
 
