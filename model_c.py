@@ -170,11 +170,11 @@ class EmoGene(nn.Module):
         Q = F.normalize(Q, p=2, dim=-1)
         K = F.normalize(K, p=2, dim=-1)
         V = F.normalize(V, p=2, dim=-1)
-        print('Q_shape:', Q)
-        print('K_shape:', K)
-        print('V_shape:', V)
+        print('Q_shape:', Q.shape)
+        print('K_shape:', K.shape)
+        print('V_shape:', V.shape)
         out, _ = self.mha(Q, K, V)
-        self.layer_norm = nn.LayerNorm(out.size(-1))  # 归一化维度
+        # self.layer_norm = nn.LayerNorm(out.size(-1))  # 归一化维度
         out = self.output_linear(out)
         print('out.shape:', out.size())
         print('out:', out)
