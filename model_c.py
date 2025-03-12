@@ -173,20 +173,32 @@ class EmoGene(nn.Module):
         print('K_shape:', K.shape)
         print('V_shape:', V.shape)
         out, _ = self.mha(Q, K, V)
-        out = F.normalize(out, p=2, dim=-1)
+        # out = F.normalize(out, p=2, dim=-1)
         out = self.output_linear(out)
         # 调整为正数
         out = torch.abs(out)
         print('out.shape:', out.size())
-        print('out:', out)
 
         # 映射成姿态信息
-        # 映射索引
-        # idx_100_850 = torch.tensor([i for i in range(54) if i % 3 != 2],
-        #                            device=out.device)  # 1,2,4,5,7,8,10,11...
-        # idx_0_1 = torch.tensor([i for i in range(54) if i % 3 == 2] + [54],
-        #                        device=out.device)  # 3,6,9,... 和最后一维
+        # 映射索引 1,2,4,5,7,8,10,11...
+        idx_100_850 = torch.tensor([i for i in range(54) if i % 3 != 2],
+                                   device=out.device)
+        # 3,6,9,... 和最后一维
+        idx_0_1 = torch.tensor([i for i in range(54) if i % 3 == 2] + [54],
+                               device=out.device)
 
+        # 映射到 100~850
+        out_min_100_850 = out[:, :, idx_100_850].min()
+        out_max_100_850 = out[:, :, idx_100_850].max()
+        out[:, :, idx_100_850] = (out[:, :, idx_100_850] - out_min_100_850) / (out_max_100_850 - out_min_100_850)
+        out[:, :, idx_100_850] = out[:, :, idx_100_850] * (850 - 100) + 100
+
+        # 映射到 0~1
+        out_min_0_1 = out[:, :, idx_0_1].min()
+        out_max_0_1 = out[:, :, idx_0_1].max()
+        out[:, :, idx_0_1] = (out[:, :, idx_0_1] - out_min_0_1) / (out_max_0_1 - out_min_0_1)
+        # out[:, :, idx_0_1] = out[:, :, idx_0_1] * (1 - 0) + 0
+        print('out:', out)
         return out
 
 
