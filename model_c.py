@@ -175,9 +175,18 @@ class EmoGene(nn.Module):
         out, _ = self.mha(Q, K, V)
         out = F.normalize(out, p=2, dim=-1)
         out = self.output_linear(out)
-        # 调整为正数，在0到1000之间
-        out = torch.abs(out) * 10000
+        # 调整为正数
+        out = torch.abs(out)
         print('out.shape:', out.size())
+        print('out:', out)
+
+        # 映射成姿态信息
+        # 映射索引
+        # idx_100_850 = torch.tensor([i for i in range(54) if i % 3 != 2],
+        #                            device=out.device)  # 1,2,4,5,7,8,10,11...
+        # idx_0_1 = torch.tensor([i for i in range(54) if i % 3 == 2] + [54],
+        #                        device=out.device)  # 3,6,9,... 和最后一维
+
         return out
 
 
