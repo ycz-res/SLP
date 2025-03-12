@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="out * 100">
+    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="print">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_c.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_c.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,23 +302,7 @@
       <workItem from="1741657588424" duration="397000" />
       <workItem from="1741658269472" duration="20892000" />
       <workItem from="1741690252685" duration="834000" />
-      <workItem from="1741691093745" duration="19923000" />
-    </task>
-    <task id="LOCAL-00018" summary="seq_len">
-      <option name="closed" value="true" />
-      <created>1741671585114</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1741671585114</updated>
-    </task>
-    <task id="LOCAL-00019" summary="seq_len">
-      <option name="closed" value="true" />
-      <created>1741671673483</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1741671673483</updated>
+      <workItem from="1741691093745" duration="20438000" />
     </task>
     <task id="LOCAL-00020" summary="_load_kps">
       <option name="closed" value="true" />
@@ -693,7 +680,23 @@
       <option name="project" value="LOCAL" />
       <updated>1741742450721</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="self.output_linear(out) * 100">
+      <option name="closed" value="true" />
+      <created>1741742569680</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1741742569680</updated>
+    </task>
+    <task id="LOCAL-00068" summary="print">
+      <option name="closed" value="true" />
+      <created>1741742713407</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1741742713407</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -712,7 +715,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="_gen_pos" />
     <MESSAGE value="seq_len" />
     <MESSAGE value="_load_kps" />
     <MESSAGE value="train_c" />
@@ -735,9 +737,10 @@
     <MESSAGE value="randn" />
     <MESSAGE value="et_1 + ut * et_1" />
     <MESSAGE value="et_prev / seq_length" />
-    <MESSAGE value="print" />
     <MESSAGE value="out * 100" />
-    <option name="LAST_COMMIT_MESSAGE" value="out * 100" />
+    <MESSAGE value="self.output_linear(out) * 100" />
+    <MESSAGE value="print" />
+    <option name="LAST_COMMIT_MESSAGE" value="print" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SLP$train_c.coverage" NAME="train_c Coverage Results" MODIFIED="1739250044671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

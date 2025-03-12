@@ -175,8 +175,9 @@ class EmoGene(nn.Module):
         out, _ = self.mha(Q, K, V)
         out = F.normalize(out, p=2, dim=-1)
         out = self.output_linear(out)
+        # 调整为正数，在0到1000之间
+        out = torch.abs(out) * 10000
         print('out.shape:', out.size())
-        print('out:', out)
         return out
 
 
