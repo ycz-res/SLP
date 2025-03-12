@@ -299,23 +299,7 @@
       <workItem from="1741657588424" duration="397000" />
       <workItem from="1741658269472" duration="20892000" />
       <workItem from="1741690252685" duration="834000" />
-      <workItem from="1741691093745" duration="23975000" />
-    </task>
-    <task id="LOCAL-00023" summary="clamp(loss, max=10.0)">
-      <option name="closed" value="true" />
-      <created>1741677729489</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1741677729489</updated>
-    </task>
-    <task id="LOCAL-00024" summary="epochs=10">
-      <option name="closed" value="true" />
-      <created>1741677765124</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1741677765124</updated>
+      <workItem from="1741691093745" duration="24284000" />
     </task>
     <task id="LOCAL-00025" summary="test0">
       <option name="closed" value="true" />
@@ -693,7 +677,23 @@
       <option name="project" value="LOCAL" />
       <updated>1741746251499</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="normalize&amp;print">
+      <option name="closed" value="true" />
+      <created>1741746622021</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1741746622021</updated>
+    </task>
+    <task id="LOCAL-00073" summary="normalize&amp;print">
+      <option name="closed" value="true" />
+      <created>1741746793515</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1741746793515</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
