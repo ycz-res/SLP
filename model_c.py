@@ -55,8 +55,9 @@ class EncoderLayer(nn.Module):
 
         # ut = torch.sigmoid(self.Wu(attention_output) + self.bu)
         ut = torch.sigmoid(self.Wu(attention_output) + self.bu)
-        print('ut', ut)
+        # print('ut', ut)
         et = ut * et_1
+        print('et', et)
 
         ct = ct_1_hidden + attention_output
         ht = attention_output
@@ -82,7 +83,7 @@ class Encoder(nn.Module):
         # et_prev = torch.zeros(batch_size, self.hidden_size).to(src.device)
         # et_prev = torch.randn(batch_size, self.hidden_size).to(src.device) * 0.01
         et_prev = torch.rand(batch_size, self.hidden_size).to(src.device) * 1.0 + 0.5
-        print('et_prev', et_prev)
+        # print('et_prev', et_prev)
 
         for t in range(seq_length):
             xt = src[:, t, :]
