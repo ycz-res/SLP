@@ -242,30 +242,13 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
                 # 把数据移动到 device
                 src_input = {key: value.to(args['device']) for key, value in src_input.items()}
                 tgt_input = {key: value.to(args['device']) for key, value in tgt_input.items()}
-                out = model(src_input, tgt_input)
 
-                # 映射
-                # scale = 800
-
-                # 分离 pose_values 和 emo_values
-                pose_values, emo_values = out.split([54, 1], dim=-1)
-
-                emo_values = torch.sigmoid(emo_values)
-                # print('pose_values:', pose_values)
-                # print('emo_values:', emo_values)
-
-                # 缩放 pose_values 到 0 到 scale 的范围并保留三位小数
-                # pose_values = torch.round(pose_values * (scale / pose_values.abs().max()) * 1000) / 1000
-
-                # 将 emo_values 映射到 0 到 1 的范围并保留三位小数
-                # emo_values = torch.round(torch.sigmoid(emo_values) * 1000) / 1000
-
-                # 合并 pose_values 和 emo_values
-                predicted = torch.cat((pose_values, emo_values), dim=-1)
+                predicted = model(src_input, tgt_input)
                 print("predicted_shape:", predicted.shape)
 
                 reference = tgt_input['input_ids']
                 print('reference_shape:', reference.shape)
+
                 print('predicted:', predicted)
                 print('reference:', reference)
 
@@ -273,16 +256,12 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
                 print('loss: ', loss)
 
             # 反向传播和梯度更新
-            print('test-1')
-            torch.autograd.set_detect_anomaly(True)
-            loss = torch.clamp(loss, max=10.0)  # 防止梯度爆炸
-            print('loss: ', loss)
             print('test0')
             scaler.scale(loss).backward()
             print('test1')
 
             # 梯度裁剪
-            torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 0.5)
             print('test2')
             scaler.step(optimizer)
             print('test3')

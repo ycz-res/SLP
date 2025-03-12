@@ -82,16 +82,6 @@ class SLPDataset(Dataset):
             'input_ids': tgt_batch,
             'attention_mask': tgt_batch_mask}
 
-        # print(src_input['input_ids'].shape)
-        # print(src_input['input_ids'])
-        # print('src_dtype', src_input['input_ids'].dtype)
-        # print(src_input['attention_mask'].shape)
-        # print(src_input['attention_mask'])
-        # print(tgt_input['input_ids'].shape)
-        # print('tgt_dtype', tgt_input['input_ids'].dtype)
-        # print(tgt_input['attention_mask'].shape)
-        # print(tgt_input['attention_mask'])
-
         # 返回一个batch视频集合 目标翻译的文本
         return src_input, tgt_input
 
