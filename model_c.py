@@ -219,6 +219,8 @@ class ProjectionLayer(nn.Module):
             if isinstance(layer, nn.Linear):
                 nn.init.xavier_uniform_(layer.weight)
                 nn.init.zeros_(layer.bias)
+                layer.weight.requires_grad = False
+                layer.bias.requires_grad = False
 
     def forward(self, x):
         projected_x = self.projection(x)
@@ -246,11 +248,9 @@ class ValEmoGene(nn.Module):
         self.register_buffer("final_logits_bias", torch.zeros((1, self.MBart.model.shared.num_embeddings)))
 
         # 映射层
-        self.projector_275_54 = ProjectionLayer(input_dim=55, output_dim=54)
         self.projector_128_1024 = ProjectionLayer(input_dim=128, output_dim=1024)
 
     def forward(self, kp_ids, kp_mask, txt_input):
-        kp_ids = self.projector_275_54(kp_ids)
         # h0 = torch.zeros(self.gru.num_layers, kp_ids.size(0), self.gru.hidden_size)
         h0 = torch.randn(self.gru.num_layers, kp_ids.size(0), self.gru.hidden_size) * 0.01
         hidden, _ = self.gru(kp_ids, h0)

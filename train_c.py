@@ -28,7 +28,7 @@ from rouge import Rouge
 def get_args_parser():
     a_parser = argparse.ArgumentParser('SLP scripts', add_help=False)
     a_parser.add_argument('--batch_size', default=1, type=int)
-    a_parser.add_argument('--epochs', default=20, type=int)
+    a_parser.add_argument('--epochs', default=10, type=int)
     a_parser.add_argument('--num_workers', default=1, type=int)
     a_parser.add_argument('--config', type=str, default='./config.yaml')
     a_parser.add_argument('--device', default='cuda')
@@ -240,8 +240,8 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
             print('tgt_ids:', tgt_input['input_ids'].size())
             with autocast():
                 # 把数据移动到 device
-                src_input = {key: value.to(args['device']) for key, value in src_input.items()}
-                tgt_input = {key: value.to(args['device']) for key, value in tgt_input.items()}
+                src_input = {key: value.to(device) for key, value in src_input.items()}
+                tgt_input = {key: value.to(device) for key, value in tgt_input.items()}
 
                 predicted = model(src_input, tgt_input)
                 print("predicted_shape:", predicted.shape)
@@ -252,11 +252,17 @@ def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
                 print('predicted:', predicted)
                 print('reference:', reference)
 
+                # 规范化尺度
+                predicted = (predicted - predicted.min()) / (predicted.max() - predicted.min())
+                reference = (reference - reference.min()) / (reference.max() - reference.min())
+
                 loss = criterion(predicted, reference)
                 print('loss: ', loss)
 
             # 反向传播和梯度更新
-            print('test0')
+            # loss 为 NaN，跳过本 batch
+            if torch.isnan(loss):
+                continue
             scaler.scale(loss).backward()
             print('test1')
 
@@ -298,15 +304,12 @@ def evaluate(slp_model, val_model, dataloader, criterion, device, tokenizer):
                     step_emo_score = criterion(kp_ids[:, :, -1], tgt_input['input_ids'][:, :, -1])
                     emo_scores += step_emo_score.item()
 
-                    vocab_logits = val_model(kp_ids, tgt_input['attention_mask'], src_input)
+                    vocab_logits = val_model(kp_ids[:,:,:-1], tgt_input['attention_mask'][:,:,:-1], src_input)
                     print('vocab_logits_shape', vocab_logits.shape)
-                    # print('---vocab_logits---:', vocab_logits)
                     # 计算评价指标
                     hypotheses_batch = tokenizer.batch_decode(vocab_logits.argmax(dim=-1), skip_special_tokens=True)
                     print(hypotheses_batch)
                     references_batch = tokenizer.batch_decode(src_input['input_ids'], skip_special_tokens=True)
-
-                    # print(src_input['input_ids'])
 
                     for hyp, ref in zip(hypotheses_batch, references_batch):
                         if not hyp.strip():

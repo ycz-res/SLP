@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="normalize&amp;print">
+    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="backward">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_c.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_c.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,23 +301,7 @@
       <workItem from="1741657588424" duration="397000" />
       <workItem from="1741658269472" duration="20892000" />
       <workItem from="1741690252685" duration="834000" />
-      <workItem from="1741691093745" duration="24284000" />
-    </task>
-    <task id="LOCAL-00025" summary="test0">
-      <option name="closed" value="true" />
-      <created>1741677876029</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1741677876029</updated>
-    </task>
-    <task id="LOCAL-00026" summary="test0">
-      <option name="closed" value="true" />
-      <created>1741677910254</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1741677910254</updated>
+      <workItem from="1741691093745" duration="26991000" />
     </task>
     <task id="LOCAL-00027" summary="print(traceback.format_exc())">
       <option name="closed" value="true" />
@@ -693,7 +679,23 @@
       <option name="project" value="LOCAL" />
       <updated>1741746793515</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="normalize&amp;print">
+      <option name="closed" value="true" />
+      <created>1741746933461</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1741746933461</updated>
+    </task>
+    <task id="LOCAL-00075" summary="backward">
+      <option name="closed" value="true" />
+      <created>1741747281706</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1741747281706</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -712,7 +714,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="_load_kps" />
     <MESSAGE value="train_c" />
     <MESSAGE value="test5" />
     <MESSAGE value="clamp(loss, max=10.0)" />
@@ -737,7 +738,8 @@
     <MESSAGE value="self.output_linear(out) * 100" />
     <MESSAGE value="print" />
     <MESSAGE value="normalize&amp;print" />
-    <option name="LAST_COMMIT_MESSAGE" value="normalize&amp;print" />
+    <MESSAGE value="backward" />
+    <option name="LAST_COMMIT_MESSAGE" value="backward" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SLP$train_c.coverage" NAME="train_c Coverage Results" MODIFIED="1739250044671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
