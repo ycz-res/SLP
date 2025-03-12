@@ -266,9 +266,13 @@ class ValEmoGene(nn.Module):
             decoder_input_ids = txt_input['input_ids']
         # print('decoder_input_ids:', decoder_input_ids)
 
+        # **构造特殊的 attention_mask**
+        batch_size, seq_len = txt_input['input_ids'].shape
+        attention_mask = torch.ones((batch_size, seq_len), device=txt_input['input_ids'].device)
+
         decoder_out = self.txt_decoder(
             input_ids=decoder_input_ids,
-            attention_mask=txt_input['attention_mask'],
+            attention_mask=attention_mask,
 
             encoder_hidden_states=hidden,
             encoder_attention_mask=kp_mask,
