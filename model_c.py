@@ -267,7 +267,7 @@ class ValEmoGene(nn.Module):
         # print('decoder_input_ids:', decoder_input_ids)
 
         decoder_out = self.txt_decoder(
-            input_ids=decoder_input_ids,
+            # input_ids=decoder_input_ids,
             # attention_mask=txt_input['attention_mask'],
 
             encoder_hidden_states=hidden,
