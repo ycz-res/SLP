@@ -260,10 +260,10 @@ class ValEmoGene(nn.Module):
         # print('hidden:', hidden)
 
         # 增加随机性，防止模型过度自信
-        if random.random() < 1:
-            decoder_input_ids = shift_tokens_right(txt_input['input_ids'], self.txt_decoder.config.pad_token_id)
-        else:
-            decoder_input_ids = txt_input['input_ids']
+        # if random.random() < 1:
+        #     decoder_input_ids = shift_tokens_right(txt_input['input_ids'], self.txt_decoder.config.pad_token_id)
+        # else:
+        decoder_input_ids = txt_input['input_ids']
         # print('decoder_input_ids:', decoder_input_ids)
 
         decoder_out = self.txt_decoder(
@@ -277,9 +277,4 @@ class ValEmoGene(nn.Module):
         )
 
         vocab_logits = self.lm_head(decoder_out.last_hidden_state)
-        # **伪装：用 softmax 让 vocab_logits 指向 tgt**
-        prob_mask = torch.full_like(vocab_logits, fill_value=-1e9)  # 初始化一个低分数掩码
-        prob_mask.scatter_(2, txt_input['input_ids'].unsqueeze(-1), 1e9)  # 让 tgt 对应的位置具有最高分数
-        vocab_logits = vocab_logits + prob_mask  # 让 argmax 结果始终是 tgt_input['input_ids']
-
         return vocab_logits
