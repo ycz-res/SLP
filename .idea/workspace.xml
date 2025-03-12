@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="test1" />
+    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="delete print function">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_c.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -297,23 +300,7 @@
       <workItem from="1741657588424" duration="397000" />
       <workItem from="1741658269472" duration="20892000" />
       <workItem from="1741690252685" duration="834000" />
-      <workItem from="1741691093745" duration="29074000" />
-    </task>
-    <task id="LOCAL-00034" summary="torch.sigmoid(pose_values) * 10">
-      <option name="closed" value="true" />
-      <created>1741682687547</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1741682687547</updated>
-    </task>
-    <task id="LOCAL-00035" summary="torch.sigmoid(pose_values) * 10">
-      <option name="closed" value="true" />
-      <created>1741682861761</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1741682861761</updated>
+      <workItem from="1741691093745" duration="29507000" />
     </task>
     <task id="LOCAL-00036" summary="sigmoid">
       <option name="closed" value="true" />
@@ -691,7 +678,23 @@
       <option name="project" value="LOCAL" />
       <updated>1741752040820</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="attention_mask.size">
+      <option name="closed" value="true" />
+      <created>1741752250389</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1741752250389</updated>
+    </task>
+    <task id="LOCAL-00084" summary="delete print function">
+      <option name="closed" value="true" />
+      <created>1741752395174</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1741752395174</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -710,8 +713,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="test5" />
-    <MESSAGE value="clamp(loss, max=10.0)" />
     <MESSAGE value="epochs=10" />
     <MESSAGE value="test0" />
     <MESSAGE value="print(traceback.format_exc())" />
@@ -735,7 +736,9 @@
     <MESSAGE value="backward" />
     <MESSAGE value="print" />
     <MESSAGE value="test1" />
-    <option name="LAST_COMMIT_MESSAGE" value="test1" />
+    <MESSAGE value="attention_mask.size" />
+    <MESSAGE value="delete print function" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete print function" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SLP$train_c.coverage" NAME="train_c Coverage Results" MODIFIED="1739250044671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

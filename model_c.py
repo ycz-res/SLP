@@ -251,9 +251,12 @@ class ValEmoGene(nn.Module):
         self.projector_128_1024 = ProjectionLayer(input_dim=128, output_dim=1024)
 
     def forward(self, kp_ids, kp_mask, txt_input):
-        print('test0')
+
         # h0 = torch.zeros(self.gru.num_layers, kp_ids.size(0), self.gru.hidden_size)
-        h0 = torch.randn(self.gru.num_layers, kp_ids.size(0), self.gru.hidden_size) * 0.01
+        # h0 = torch.randn(self.gru.num_layers, kp_ids.size(0), self.gru.hidden_size) * 0.01
+        h0 = torch.randn(
+            self.gru.num_layers, kp_ids.size(0), self.gru.hidden_size, device=kp_ids.device
+        ) * 0.01
         hidden, _ = self.gru(kp_ids, h0)
         hidden = self.projector_128_1024(hidden)
         hidden = torch.tanh(hidden) / 10
