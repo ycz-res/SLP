@@ -56,7 +56,7 @@ class EncoderLayer(nn.Module):
         # ut = torch.sigmoid(self.Wu(attention_output) + self.bu)
         ut = torch.sigmoid(self.Wu(attention_output) + self.bu)
         # print('ut', ut)
-        et = ut * et_1
+        et = et_1 + ut * et_1
         print('et', et)
 
         ct = ct_1_hidden + attention_output
