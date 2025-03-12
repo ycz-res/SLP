@@ -25,6 +25,7 @@ class EncoderLayer(nn.Module):
         self.Wu = nn.Linear(hidden_size, hidden_size)
         self.bu = nn.Parameter(torch.randn(hidden_size))
 
+
         # 初始化
         nn.init.xavier_uniform_(self.Wf.weight)
         nn.init.xavier_uniform_(self.Wq.weight)
@@ -52,7 +53,7 @@ class EncoderLayer(nn.Module):
         attention_output = torch.matmul(attention_weights, V).squeeze(1)
 
         # ut = torch.sigmoid(self.Wu(attention_output) + self.bu)
-        ut = torch.sigmoid(self.Wu(attention_output) + self.bu)
+        ut = torch.sigmoid(self.Wu(attention_output))
         et = ut * et_1
 
         ct = ct_1_hidden + attention_output
