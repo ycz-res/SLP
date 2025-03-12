@@ -93,8 +93,8 @@ class Encoder(nn.Module):
         # L2 归一化，使向量范数变成 1
         ht = F.normalize(ht, p=2, dim=-1)
         et = F.normalize(et , p=2, dim=-1)
-        print('ct', ct)
-        print('et', et)
+        # print('ct', ct)
+        # print('et', et)
         return ht, ct, et
 
 
@@ -144,8 +144,6 @@ class EmoGene(nn.Module):
         print('src_embedding:', src.shape)
 
         ht, _, et = self.encoder(src)
-        # print('ht:', ht)
-        # print('et:', et)
         print('ht_shape:', ht.shape)
 
         print('et_shape:', et.shape)
@@ -153,7 +151,6 @@ class EmoGene(nn.Module):
         # 位置编码
         pos = self._gen_pos(tgt['input_ids'])
         print('pos_shape:', pos.shape)
-        # print('pos:', pos)
 
         # 注意力
         _, seq_len, _ = tgt['input_ids'].size()
@@ -163,6 +160,10 @@ class EmoGene(nn.Module):
         tgt = self.tgt_linear(tgt['input_ids'])
         print('tgt_embedding:', tgt.shape)
         et_expanded = et.unsqueeze(1)
+
+        tgt = F.normalize(tgt, p=2, dim=-1)
+        pos = F.normalize(pos, p=2, dim=-1)
+
         V = tgt + et_expanded + pos
         V = self.Wv(V)
         # 归一化 Q 和 K，避免注意力分数数值过大
