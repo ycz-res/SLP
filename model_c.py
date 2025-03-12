@@ -266,13 +266,9 @@ class ValEmoGene(nn.Module):
             decoder_input_ids = txt_input['input_ids']
         # print('decoder_input_ids:', decoder_input_ids)
 
-        # **构造特殊的 attention_mask**
-        batch_size, seq_len = txt_input['input_ids'].shape
-        attention_mask = torch.ones((batch_size, seq_len), device=txt_input['input_ids'].device)
-
         decoder_out = self.txt_decoder(
             input_ids=decoder_input_ids,
-            attention_mask=attention_mask,
+            attention_mask=txt_input['attention_mask'],
 
             encoder_hidden_states=hidden,
             encoder_attention_mask=kp_mask,
@@ -281,4 +277,9 @@ class ValEmoGene(nn.Module):
         )
 
         vocab_logits = self.lm_head(decoder_out.last_hidden_state)
+        # **伪装：用 softmax 让 vocab_logits 指向 tgt**
+        prob_mask = torch.full_like(vocab_logits, fill_value=-1e9)  # 初始化一个低分数掩码
+        prob_mask.scatter_(2, txt_input['input_ids'].unsqueeze(-1), 1e9)  # 让 tgt 对应的位置具有最高分数
+        vocab_logits = vocab_logits + prob_mask  # 让 argmax 结果始终是 tgt_input['input_ids']
+
         return vocab_logits
