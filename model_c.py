@@ -25,7 +25,6 @@ class EncoderLayer(nn.Module):
         self.Wu = nn.Linear(hidden_size, hidden_size)
         self.bu = nn.Parameter(torch.randn(hidden_size))
 
-
         # 初始化
         nn.init.xavier_uniform_(self.Wf.weight)
         nn.init.xavier_uniform_(self.Wq.weight)
@@ -92,7 +91,7 @@ class Encoder(nn.Module):
 
         # L2 归一化，使向量范数变成 1
         ht = F.normalize(ht, p=2, dim=-1)
-        et = F.normalize(et , p=2, dim=-1)
+        et = F.normalize(et, p=2, dim=-1)
         # print('ct', ct)
         # print('et', et)
         return ht, ct, et
@@ -174,7 +173,7 @@ class EmoGene(nn.Module):
         print('K_shape:', K.shape)
         print('V_shape:', V.shape)
         out, _ = self.mha(Q, K, V)
-        # self.layer_norm = nn.LayerNorm(out.size(-1))  # 归一化维度
+        self.layer_norm = nn.LayerNorm(out.size(-1))  # 归一化维度
         out = self.output_linear(out)
         print('out.shape:', out.size())
         print('out:', out)
