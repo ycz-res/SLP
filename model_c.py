@@ -238,7 +238,8 @@ class ValEmoGene(nn.Module):
                           hidden_size=hidden_size,
                           num_layers=num_layers,
                           batch_first=batch_first)
-        self.layer_norm = nn.LayerNorm(hidden_size)
+
+        self.layer_norm = nn.LayerNorm(1024)
 
         # 解码器
         self.MBart = MBartForConditionalGeneration.from_pretrained(
