@@ -301,14 +301,12 @@ def evaluate(slp_model, val_model, dataloader, criterion, device, tokenizer):
                     print('kp_ids_shape:', kp_ids.shape)
                     step_emo_score = criterion(kp_ids[:, :, -1], tgt_input['input_ids'][:, :, -1])
                     emo_scores += step_emo_score.item()
-                    print('test1')
-                    print('attention_mask.size', tgt_input['attention_mask'].size())
-                    vocab_logits = val_model(kp_ids[:, :, :-1], tgt_input['attention_mask'][:, :, :-1], src_input)
-                    print('test2')
+                    vocab_logits = val_model(kp_ids[:, :, :-1], tgt_input['attention_mask'], src_input)
+
                     # 计算评价指标
                     hypotheses_batch = tokenizer.batch_decode(vocab_logits.argmax(dim=-1), skip_special_tokens=True)
                     references_batch = tokenizer.batch_decode(src_input['input_ids'], skip_special_tokens=True)
-                    print('test3')
+
                     for hyp, ref in zip(hypotheses_batch, references_batch):
                         if not hyp.strip():
                             hyp = "<empty>"
