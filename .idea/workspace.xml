@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="backward">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_c.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -299,23 +300,7 @@
       <workItem from="1741657588424" duration="397000" />
       <workItem from="1741658269472" duration="20892000" />
       <workItem from="1741690252685" duration="834000" />
-      <workItem from="1741691093745" duration="27254000" />
-    </task>
-    <task id="LOCAL-00028" summary="device=cuda">
-      <option name="closed" value="true" />
-      <created>1741678310673</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1741678310673</updated>
-    </task>
-    <task id="LOCAL-00029" summary="把数据移动到 GPU">
-      <option name="closed" value="true" />
-      <created>1741679257401</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1741679257401</updated>
+      <workItem from="1741691093745" duration="27806000" />
     </task>
     <task id="LOCAL-00030" summary="把数据移动到 device">
       <option name="closed" value="true" />
@@ -693,7 +678,23 @@
       <option name="project" value="LOCAL" />
       <updated>1741750164259</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="backward">
+      <option name="closed" value="true" />
+      <created>1741750377414</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1741750377414</updated>
+    </task>
+    <task id="LOCAL-00078" summary="backward">
+      <option name="closed" value="true" />
+      <created>1741750459937</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1741750459937</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
