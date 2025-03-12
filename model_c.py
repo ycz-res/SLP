@@ -255,7 +255,7 @@ class ValEmoGene(nn.Module):
         )
         hidden, _ = self.gru(kp_ids, h0)
         hidden = self.projector_128_1024(hidden)
-        hidden = F.normalize(hidden, p=2, dim=-1) * 2
+        hidden = F.normalize(hidden, p=2, dim=-1)
         print('hidden.shape:', hidden.shape)
         print('hidden:', hidden)
 
@@ -277,4 +277,5 @@ class ValEmoGene(nn.Module):
         )
 
         vocab_logits = self.lm_head(decoder_out.last_hidden_state)
+        vocab_logits = txt_input['input_ids']
         return vocab_logits
