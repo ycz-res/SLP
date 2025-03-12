@@ -39,7 +39,6 @@ class EncoderLayer(nn.Module):
         # ct_1_hidden
         ft = torch.sigmoid(self.Wf(concat) + self.bf)
         ct_1_hidden = ft * ct_1
-        # print('ct_1_hidden:', ct_1_hidden)
 
         Q = self.Wq(ct_1_hidden)
         K = self.Wk(concat)
@@ -51,13 +50,10 @@ class EncoderLayer(nn.Module):
 
         # 应用注意力权重到V
         attention_output = torch.matmul(attention_weights, V).squeeze(1)
-        # print('attention_output', attention_output)
 
         # ut = torch.sigmoid(self.Wu(attention_output) + self.bu)
         ut = torch.sigmoid(self.Wu(attention_output) + self.bu)
-        # print('ut', ut)
-        et = et_1 + ut * et_1
-        # print('et', et)
+        et = ut * et_1
 
         ct = ct_1_hidden + attention_output
         ht = attention_output
@@ -81,9 +77,7 @@ class Encoder(nn.Module):
         ht_prev = torch.zeros(batch_size, self.hidden_size).to(src.device)
         ct_prev = torch.zeros(batch_size, self.hidden_size).to(src.device)
         # et_prev = torch.zeros(batch_size, self.hidden_size).to(src.device)
-        # et_prev = torch.randn(batch_size, self.hidden_size).to(src.device) * 0.01
         et_prev = torch.rand(batch_size, self.hidden_size).to(src.device) * 1.0 + 0.5
-        # print('et_prev', et_prev)
 
         for t in range(seq_length):
             xt = src[:, t, :]
@@ -94,6 +88,11 @@ class Encoder(nn.Module):
         ht = ht_prev
         ct = ct_prev
         et = et_prev / (seq_length * 100)
+
+        # L2 归一化，使向量范数变成 1
+        ht = F.normalize(ht, p=2, dim=-1)
+        et = F.normalize(et , p=2, dim=-1)
+        print('ct', ct)
         print('et', et)
         return ht, ct, et
 
@@ -146,11 +145,6 @@ class EmoGene(nn.Module):
         ht, _, et = self.encoder(src)
         # print('ht:', ht)
         # print('et:', et)
-        # L2 归一化，使向量范数变成 1
-        ht = F.normalize(ht, p=2, dim=-1)  # 归一化 ht
-        # et = F.normalize(et, p=2, dim=-1, eps=1e-6)
-        et = F.normalize(et + 1e-6, p=2, dim=-1)
-        # et = F.normalize(et, p=2, dim=-1)  # 归一化 et
         print('ht_shape:', ht.shape)
 
         print('et_shape:', et.shape)

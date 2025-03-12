@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="et_1 + ut * et_1">
+    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="print">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_c.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -299,31 +300,7 @@
       <workItem from="1741657588424" duration="397000" />
       <workItem from="1741658269472" duration="20892000" />
       <workItem from="1741690252685" duration="834000" />
-      <workItem from="1741691093745" duration="16159000" />
-    </task>
-    <task id="LOCAL-00008" summary="数据及处理">
-      <option name="closed" value="true" />
-      <created>1741611728574</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1741611728574</updated>
-    </task>
-    <task id="LOCAL-00009" summary="数据及处理">
-      <option name="closed" value="true" />
-      <created>1741611752767</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1741611752767</updated>
-    </task>
-    <task id="LOCAL-00010" summary="数据集加载流程优化">
-      <option name="closed" value="true" />
-      <created>1741664479592</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1741664479592</updated>
+      <workItem from="1741691093745" duration="17334000" />
     </task>
     <task id="LOCAL-00011" summary="修复数据集加载 utils 函数">
       <option name="closed" value="true" />
@@ -693,7 +670,31 @@
       <option name="project" value="LOCAL" />
       <updated>1741738610512</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="et_prev / seq_length">
+      <option name="closed" value="true" />
+      <created>1741738794757</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1741738794757</updated>
+    </task>
+    <task id="LOCAL-00058" summary="print">
+      <option name="closed" value="true" />
+      <created>1741738881808</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1741738881808</updated>
+    </task>
+    <task id="LOCAL-00059" summary="print">
+      <option name="closed" value="true" />
+      <created>1741739024589</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1741739024589</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -712,7 +713,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="kps_dir" />
     <MESSAGE value="tgt_embedding" />
     <MESSAGE value="_gen_pos" />
     <MESSAGE value="seq_len" />
@@ -735,9 +735,10 @@
     <MESSAGE value="eps=1e-6" />
     <MESSAGE value="1e-6" />
     <MESSAGE value="randn" />
-    <MESSAGE value="print" />
     <MESSAGE value="et_1 + ut * et_1" />
-    <option name="LAST_COMMIT_MESSAGE" value="et_1 + ut * et_1" />
+    <MESSAGE value="et_prev / seq_length" />
+    <MESSAGE value="print" />
+    <option name="LAST_COMMIT_MESSAGE" value="print" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SLP$train_c.coverage" NAME="train_c Coverage Results" MODIFIED="1739250044671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
