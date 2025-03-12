@@ -268,10 +268,10 @@ class ValEmoGene(nn.Module):
 
         decoder_out = self.txt_decoder(
             input_ids=decoder_input_ids,
-            attention_mask=txt_input['attention_mask'],
+            # attention_mask=txt_input['attention_mask'],
 
-            encoder_hidden_states=hidden,
-            encoder_attention_mask=kp_mask,
+            # encoder_hidden_states=hidden,
+            # encoder_attention_mask=kp_mask,
 
             return_dict=True,
         )
