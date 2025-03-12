@@ -271,7 +271,7 @@ class ValEmoGene(nn.Module):
             attention_mask=txt_input['attention_mask'],
 
             encoder_hidden_states=hidden,
-            # encoder_attention_mask=kp_mask,
+            encoder_attention_mask=kp_mask,
 
             return_dict=True,
         )
