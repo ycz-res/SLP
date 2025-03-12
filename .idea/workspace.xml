@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="hidden">
+    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="&lt;pad&gt;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_c.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_c.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,23 +301,7 @@
       <workItem from="1741657588424" duration="397000" />
       <workItem from="1741658269472" duration="20892000" />
       <workItem from="1741690252685" duration="834000" />
-      <workItem from="1741691093745" duration="33332000" />
-    </task>
-    <task id="LOCAL-00040" summary="print">
-      <option name="closed" value="true" />
-      <created>1741701647681</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1741701647681</updated>
-    </task>
-    <task id="LOCAL-00041" summary="print">
-      <option name="closed" value="true" />
-      <created>1741701682774</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1741701682774</updated>
+      <workItem from="1741691093745" duration="34499000" />
     </task>
     <task id="LOCAL-00042" summary="normalize">
       <option name="closed" value="true" />
@@ -694,7 +679,23 @@
       <option name="project" value="LOCAL" />
       <updated>1741757250463</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="&lt;pad&gt;">
+      <option name="closed" value="true" />
+      <created>1741758773769</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1741758773769</updated>
+    </task>
+    <task id="LOCAL-00090" summary="&lt;pad&gt;">
+      <option name="closed" value="true" />
+      <created>1741758814934</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1741758814934</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -713,7 +714,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="device=cuda" />
     <MESSAGE value="把数据移动到 GPU" />
     <MESSAGE value="把数据移动到 device" />
     <MESSAGE value="print('reference:', reference)" />
@@ -738,7 +738,8 @@
     <MESSAGE value="put h0 to cuda" />
     <MESSAGE value="evaluate" />
     <MESSAGE value="hidden" />
-    <option name="LAST_COMMIT_MESSAGE" value="hidden" />
+    <MESSAGE value="&lt;pad&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&lt;pad&gt;" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SLP$train_c.coverage" NAME="train_c Coverage Results" MODIFIED="1739250044671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

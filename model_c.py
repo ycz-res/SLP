@@ -264,7 +264,7 @@ class ValEmoGene(nn.Module):
             decoder_input_ids = shift_tokens_right(txt_input['input_ids'], self.txt_decoder.config.pad_token_id)
         else:
             decoder_input_ids = txt_input['input_ids']
-        print('decoder_input_ids:', decoder_input_ids)
+        # print('decoder_input_ids:', decoder_input_ids)
 
         decoder_out = self.txt_decoder(
             input_ids=decoder_input_ids,
