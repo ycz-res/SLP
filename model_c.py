@@ -93,7 +93,7 @@ class Encoder(nn.Module):
 
         ht = ht_prev
         ct = ct_prev
-        et = et_prev
+        et = et_prev / seq_length
         return ht, ct, et
 
 
