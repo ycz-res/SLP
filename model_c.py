@@ -245,30 +245,28 @@ class ValEmoGene(nn.Module):
         self.txt_decoder = self.MBart.get_decoder()
 
         self.lm_head = self.MBart.get_output_embeddings()
-        self.register_buffer("final_logits_bias", torch.zeros((1, self.MBart.model.shared.num_embeddings)))
-
         # 映射层
         self.projector_128_1024 = ProjectionLayer(input_dim=128, output_dim=1024)
 
     def forward(self, kp_ids, kp_mask, txt_input):
-
-        # h0 = torch.zeros(self.gru.num_layers, kp_ids.size(0), self.gru.hidden_size)
         # h0 = torch.randn(self.gru.num_layers, kp_ids.size(0), self.gru.hidden_size) * 0.01
         h0 = torch.randn(
             self.gru.num_layers, kp_ids.size(0), self.gru.hidden_size, device=kp_ids.device
-        ) * 0.01
+        )
         hidden, _ = self.gru(kp_ids, h0)
         hidden = self.projector_128_1024(hidden)
-        hidden = torch.tanh(hidden) / 10
+        hidden = self.lm_head(hidden)
+        # hidden = F.normalize(hidden, p=2, dim=-1)
+        print('hidden.shape:', hidden.shape)
         print('hidden:', hidden)
 
         # 增加随机性，防止模型过度自信
-        if random.random() < 0.81:
+        if random.random() < 1:
             decoder_input_ids = shift_tokens_right(txt_input['input_ids'], self.txt_decoder.config.pad_token_id)
         else:
             decoder_input_ids = txt_input['input_ids']
-
         print('decoder_input_ids:', decoder_input_ids)
+
         decoder_out = self.txt_decoder(
             input_ids=decoder_input_ids,
             attention_mask=txt_input['attention_mask'],
