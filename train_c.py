@@ -299,11 +299,15 @@ def evaluate(slp_model, val_model, dataloader, criterion, device, tokenizer):
                 with autocast():
                     kp_ids = slp_model(src_input, tgt_input)
                     print('kp_ids_shape:', kp_ids.shape)
+
+                    print(kp_ids[:, :, :-1].shape)
+                    print(tgt_input['attention_mask'][:, :, :-1].shape)
+
                     step_emo_score = criterion(kp_ids[:, :, -1], tgt_input['input_ids'][:, :, -1])
                     emo_scores += step_emo_score.item()
                     print('emo_scores_shape', emo_scores.shape)
                     print(kp_ids[:,:,:-1].shape)
-                    print(tgt_input['attention_mask'][:,:,:-1].shape)
+
 
                     vocab_logits = val_model(kp_ids[:,:,:-1], tgt_input['attention_mask'][:,:,:-1], src_input)
                     print('vocab_logits_shape', vocab_logits.shape)
