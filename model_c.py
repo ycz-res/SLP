@@ -259,8 +259,8 @@ class ValEmoGene(nn.Module):
         print('hidden.shape:', hidden.shape)
         # print('hidden:', hidden)
 
-        batch_size, seq_len, hidden_dim = txt_input['input_ids'].shape
-        attention_mask = torch.ones((batch_size, seq_len, hidden_dim), dtype=torch.float32)
+        # batch_size, seq_len, hidden_dim = txt_input['input_ids'].shape
+        # attention_mask = torch.ones((batch_size, seq_len, hidden_dim), dtype=torch.float32)
 
         # 增加随机性，防止模型过度自信
         # if random.random() < 1:
@@ -268,6 +268,12 @@ class ValEmoGene(nn.Module):
         # else:
         decoder_input_ids = shift_tokens_right(txt_input['input_ids'], self.txt_decoder.config.pad_token_id)
         # print('decoder_input_ids:', decoder_input_ids)
+        from transformers import AutoTokenizer, MBartTokenizer
+        tokenizer = MBartTokenizer.from_pretrained("facebook/mbart-large-cc25")
+        attention_mask = tokenizer(txt_input['input_ids'],
+                                   return_tensors="pt",
+                                   padding=True,
+                                   truncation=True)
 
         decoder_out = self.txt_decoder(
             input_ids=decoder_input_ids,
