@@ -302,7 +302,7 @@ def evaluate(slp_model, val_model, dataloader, criterion, device, tokenizer):
                     step_emo_score = criterion(kp_ids[:, :, -1], tgt_input['input_ids'][:, :, -1])
                     emo_scores += step_emo_score.item()
                     print('test1')
-
+                    print('attention_mask.size', tgt_input['attention_mask'].size())
                     vocab_logits = val_model(kp_ids[:, :, :-1], tgt_input['attention_mask'][:, :, :-1], src_input)
                     print('test2')
                     # 计算评价指标
