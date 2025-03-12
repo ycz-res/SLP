@@ -255,7 +255,6 @@ class ValEmoGene(nn.Module):
         )
         hidden, _ = self.gru(kp_ids, h0)
         hidden = self.projector_128_1024(hidden)
-        hidden = self.lm_head(hidden)
         # hidden = F.normalize(hidden, p=2, dim=-1)
         print('hidden.shape:', hidden.shape)
         print('hidden:', hidden)

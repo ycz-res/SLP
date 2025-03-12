@@ -87,7 +87,7 @@ def main(args_, config):
     # tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
     # tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
     tokenizer = MBartTokenizer.from_pretrained("facebook/mbart-large-cc25")
-    print('tokenizer_vocab_size', tokenizer.vocab_size)
+    # print('tokenizer_vocab_size', tokenizer.vocab_size)
     tokenizer.src_lang = 'en_XX'
     tokenizer.tgt_lang = 'en_XX'
 
