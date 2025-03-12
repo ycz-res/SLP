@@ -309,7 +309,7 @@ def evaluate(slp_model, val_model, dataloader, criterion, device, tokenizer):
 
                     for hyp, ref in zip(hypotheses_batch, references_batch):
                         if not hyp.strip():
-                            hyp = "<empty>"
+                            hyp = "empty"
                         print('hyp: ', hyp)
                         print('ref: ', ref)
 
@@ -325,6 +325,7 @@ def evaluate(slp_model, val_model, dataloader, criterion, device, tokenizer):
 
     # 计算 BLEU 和 ROUGE 分数
     bleu = BLEU().corpus_score(hypotheses, [references])
+
     rouge = Rouge().get_scores(hypotheses, references, avg=True)
 
     # 解析 BLEU 和 ROUGE 分数

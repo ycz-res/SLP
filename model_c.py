@@ -266,16 +266,15 @@ class ValEmoGene(nn.Module):
             decoder_input_ids = txt_input['input_ids']
         # print('decoder_input_ids:', decoder_input_ids)
 
-        # decoder_out = self.txt_decoder(
-        #     input_ids=decoder_input_ids,
-        #     attention_mask=txt_input['attention_mask'],
-        #
-        #     encoder_hidden_states=hidden,
-        #     encoder_attention_mask=kp_mask,
-        #
-        #     return_dict=True,
-        # )
-        #
-        # vocab_logits = self.lm_head(decoder_out.last_hidden_state)
-        vocab_logits = txt_input['input_ids']
+        decoder_out = self.txt_decoder(
+            input_ids=decoder_input_ids,
+            attention_mask=txt_input['attention_mask'],
+
+            encoder_hidden_states=hidden,
+            encoder_attention_mask=kp_mask,
+
+            return_dict=True,
+        )
+
+        vocab_logits = self.lm_head(decoder_out.last_hidden_state)
         return vocab_logits
