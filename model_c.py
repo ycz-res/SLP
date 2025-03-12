@@ -257,7 +257,7 @@ class ValEmoGene(nn.Module):
         hidden = self.projector_128_1024(hidden)
         hidden = F.normalize(hidden, p=2, dim=-1)
         print('hidden.shape:', hidden.shape)
-        print('hidden:', hidden)
+        # print('hidden:', hidden)
 
         # 增加随机性，防止模型过度自信
         if random.random() < 1:
@@ -270,7 +270,7 @@ class ValEmoGene(nn.Module):
             input_ids=decoder_input_ids,
             # attention_mask=txt_input['attention_mask'],
 
-            # encoder_hidden_states=hidden,
+            encoder_hidden_states=hidden,
             # encoder_attention_mask=kp_mask,
 
             return_dict=True,
