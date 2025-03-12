@@ -239,8 +239,6 @@ class ValEmoGene(nn.Module):
                           num_layers=num_layers,
                           batch_first=batch_first)
 
-        self.layer_norm = nn.LayerNorm(1024)
-
         # 解码器
         self.MBart = MBartForConditionalGeneration.from_pretrained(
             "facebook/mbart-large-cc25")
@@ -257,7 +255,7 @@ class ValEmoGene(nn.Module):
         )
         hidden, _ = self.gru(kp_ids, h0)
         hidden = self.projector_128_1024(hidden)
-        hidden = self.layer_norm(hidden)
+        hidden = F.normalize(hidden, p=2, dim=-1) * 10
         print('hidden.shape:', hidden.shape)
         print('hidden:', hidden)
 
