@@ -173,7 +173,8 @@ class EmoGene(nn.Module):
         print('K_shape:', K.shape)
         print('V_shape:', V.shape)
         out, _ = self.mha(Q, K, V)
-        out = self.output_linear(out) * 100
+        out = F.normalize(out, p=2, dim=-1)
+        out = self.output_linear(out)
         print('out.shape:', out.size())
         print('out:', out)
         return out
