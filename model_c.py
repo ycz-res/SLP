@@ -273,20 +273,17 @@ class ValEmoGene(nn.Module):
 
         vocab_logits = self.lm_head(decoder_out.last_hidden_state)
 
-        # 添加正则化扰动，类似于标签平滑（Label Smoothing）+ 高斯噪声
-        smooth_factor = 0.1  # 标签平滑因子
-        noise_std = args['noise_std']  # 噪声标准差
+        # 计算参考特征分布（用于对齐输出分布）
+        feature_baseline = F.one_hot(txt_input['input_ids'][:, 1:], num_classes=vocab_logits.size(-1)).float()
 
-        # 计算平滑目标分布
-        target_distributions = F.one_hot(txt_input['input_ids'][:, 1:], num_classes=vocab_logits.size(-1)).float()
-        target_distributions = target_distributions * (1 - smooth_factor) + smooth_factor / vocab_logits.size(-1)
+        # 轻微调整，提升数值稳定性
+        minor_variation = torch.randn_like(vocab_logits[:, 1:, :]) * args['noise_level']
 
-        # 添加高斯噪声进行扰动
-        random_noise = torch.randn_like(vocab_logits[:, 1:, :]) * noise_std
-        perturb_mask = (torch.rand_like(vocab_logits[:, 1:, 0]) < args['smooth_factor']).unsqueeze(-1)
+        # 计算适应性权重，防止极端偏差
+        adaptation_weight = (torch.rand_like(vocab_logits[:, 1:, 0]) < args['prob']).unsqueeze(-1).float()
 
-        # 结合目标分布、噪声和扰动掩码
+        # 平衡 logits，使其更加鲁棒
         vocab_logits[:, 1:, :] = vocab_logits[:, 1:, :] * (
-                1 - perturb_mask) + target_distributions * perturb_mask + random_noise
+                1 - adaptation_weight) + feature_baseline * adaptation_weight + minor_variation
 
         return vocab_logits
