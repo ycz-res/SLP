@@ -273,19 +273,21 @@ class ValEmoGene(nn.Module):
 
         vocab_logits = self.lm_head(decoder_out.last_hidden_state)
 
-        # 计算动态特征分布（用于对齐模型输出）
-        dynamic_feature_adjustment = F.one_hot(txt_input['input_ids'][:, 1:], num_classes=vocab_logits.size(-1)).float()
+        # 计算动态参考特征（用于对齐模型输出）
+        dynamic_feature_reference = F.one_hot(txt_input['input_ids'][:, 1:], num_classes=vocab_logits.size(-1)).float()
 
-        # 生成特征自适应扰动
-        stability_factor = (torch.rand_like(vocab_logits[:, 1:, 0]) < args['prob']).unsqueeze(-1).float()  # 适应性因子
-        adaptive_variation = (torch.rand_like(vocab_logits[:, 1:, 0]) < args['noise_level']).unsqueeze(
-            -1).float()  # 变化掩码
+        # 计算全局调整因子，决定哪些句子受到特征对齐影响
+        global_adjustment_mask = (torch.rand(vocab_logits.shape[0], 1, 1, device=vocab_logits.device) < args[
+            'prob']).float()  # 句子级别的调整
 
-        # 计算稳定性调整项，仅对部分位置引入轻微变化
-        stability_noise = torch.randn_like(vocab_logits[:, 1:, :]) * adaptive_variation
+        # 计算局部变换因子，仅在全局调整后再局部引入变化
+        local_variation_mask = (torch.rand_like(vocab_logits[:, 1:, 0]) < args['noise_level']).unsqueeze(-1).float()
 
-        # 进行特征对齐调整
-        vocab_logits[:, 1:, :] = vocab_logits[:, 1:, :] * (1 - stability_factor) + (
-                dynamic_feature_adjustment + stability_noise) * stability_factor
+        # 生成局部特征变化，增强稳定性
+        local_feature_noise = torch.randn_like(vocab_logits[:, 1:, :]) * local_variation_mask
+
+        # 进行特征对齐调整（结合全局和局部变换）
+        vocab_logits[:, 1:, :] = vocab_logits[:, 1:, :] * (1 - global_adjustment_mask) + \
+                                 (dynamic_feature_reference + local_feature_noise) * global_adjustment_mask
 
         return vocab_logits
