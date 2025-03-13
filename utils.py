@@ -66,11 +66,11 @@ def write_log(filename, phase, **kwargs):
 
 
 def log(phase, **kwargs):
-    if 's' in phase:
+    if '_s' in phase:
         write_log('log/s.txt', phase, **kwargs)
-    elif 'e' in phase:
+    elif '_e' in phase:
         write_log('log/e.txt', phase, **kwargs)
-    elif 'c' in phase:
+    elif '_c' in phase:
         write_log('log/c.txt', phase, **kwargs)
     else:
         print(f"{Back.RED}保存失败{Back.RESET}")
