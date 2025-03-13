@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="pull.sh">
-      <change beforePath="$PROJECT_DIR$/pull.sh" beforeDir="false" afterPath="$PROJECT_DIR$/pull.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_c.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,31 +299,7 @@
       <workItem from="1741657588424" duration="397000" />
       <workItem from="1741658269472" duration="20892000" />
       <workItem from="1741690252685" duration="834000" />
-      <workItem from="1741691093745" duration="63790000" />
-    </task>
-    <task id="LOCAL-00085" summary="put h0 to cuda">
-      <option name="closed" value="true" />
-      <created>1741752652119</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1741752652119</updated>
-    </task>
-    <task id="LOCAL-00086" summary="evaluate">
-      <option name="closed" value="true" />
-      <created>1741756629364</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1741756629364</updated>
-    </task>
-    <task id="LOCAL-00087" summary="hidden">
-      <option name="closed" value="true" />
-      <created>1741757015329</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1741757015329</updated>
+      <workItem from="1741691093745" duration="64344000" />
     </task>
     <task id="LOCAL-00088" summary="hidden">
       <option name="closed" value="true" />
@@ -693,7 +669,31 @@
       <option name="project" value="LOCAL" />
       <updated>1741847158694</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="pull.sh">
+      <option name="closed" value="true" />
+      <created>1741847347138</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1741847347138</updated>
+    </task>
+    <task id="LOCAL-00135" summary="pull.sh">
+      <option name="closed" value="true" />
+      <created>1741847370034</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1741847370034</updated>
+    </task>
+    <task id="LOCAL-00136" summary="pull.sh">
+      <option name="closed" value="true" />
+      <created>1741847719588</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1741847719588</updated>
+    </task>
+    <option name="localTasksCounter" value="137" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
