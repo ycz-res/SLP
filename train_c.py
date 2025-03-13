@@ -243,7 +243,6 @@ def main(args_, config):
               emo_score=emo_score,
               bleu1=bleu1,
               bleu2=bleu2,
-
               bleu3=bleu3,
               bleu4=bleu4,
               rouge_l=rouge_l)
