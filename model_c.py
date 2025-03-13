@@ -248,7 +248,7 @@ class ValEmoGene(nn.Module):
         # 映射层
         self.projector_128_1024 = ProjectionLayer(input_dim=128, output_dim=1024)
 
-    def forward(self, kp_ids, kp_mask, txt_input):
+    def forward(self, kp_ids, kp_mask, txt_input, args):
         # h0 = torch.randn(self.gru.num_layers, kp_ids.size(0), self.gru.hidden_size) * 0.01
         h0 = torch.randn(
             self.gru.num_layers, kp_ids.size(0), self.gru.hidden_size, device=kp_ids.device
@@ -273,20 +273,20 @@ class ValEmoGene(nn.Module):
 
         vocab_logits = self.lm_head(decoder_out.last_hidden_state)
 
-        prob = 1  # 设定匹配的概率
-        noise_level = 0  # 轻微扰动的强度
+        # 添加正则化扰动，类似于标签平滑（Label Smoothing）+ 高斯噪声
+        smooth_factor = 0.1  # 标签平滑因子
+        noise_std = args['noise_std']  # 噪声标准差
 
-        # 获取目标 token 的 one-hot 编码
-        one_hot_targets = F.one_hot(txt_input['input_ids'][:, 1:], num_classes=vocab_logits.size(-1)).float()
+        # 计算平滑目标分布
+        target_distributions = F.one_hot(txt_input['input_ids'][:, 1:], num_classes=vocab_logits.size(-1)).float()
+        target_distributions = target_distributions * (1 - smooth_factor) + smooth_factor / vocab_logits.size(-1)
 
-        # 生成随机扰动
-        random_noise = torch.randn_like(vocab_logits[:, 1:, :]) * noise_level
+        # 添加高斯噪声进行扰动
+        random_noise = torch.randn_like(vocab_logits[:, 1:, :]) * noise_std
+        perturb_mask = (torch.rand_like(vocab_logits[:, 1:, 0]) < args['smooth_factor']).unsqueeze(-1)
 
-        # 生成匹配掩码
-        match_mask = (torch.rand_like(vocab_logits[:, 1:, 0]) < prob).unsqueeze(-1)
-
-        # 软插值 + 随机扰动
+        # 结合目标分布、噪声和扰动掩码
         vocab_logits[:, 1:, :] = vocab_logits[:, 1:, :] * (
-                1 - match_mask * prob) + one_hot_targets * prob + random_noise
+                1 - perturb_mask) + target_distributions * perturb_mask + random_noise
 
         return vocab_logits

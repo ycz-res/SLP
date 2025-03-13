@@ -28,7 +28,7 @@ from rouge import Rouge
 def get_args_parser():
     a_parser = argparse.ArgumentParser('SLP scripts', add_help=False)
     a_parser.add_argument('--batch_size', default=1, type=int)
-    a_parser.add_argument('--epochs', default=3000, type=int)
+    a_parser.add_argument('--epochs', default=1, type=int)
     a_parser.add_argument('--num_workers', default=1, type=int)
     a_parser.add_argument('--config', type=str, default='./config.yaml')
     a_parser.add_argument('--device', default='cuda')
@@ -64,6 +64,8 @@ def get_args_parser():
     a_parser.add_argument('--succeed', default=False, type=bool)
 
     a_parser.add_argument('--alpha', type=float, default=0, metavar='RATE')
+    a_parser.add_argument('--smooth_factor', type=float, default=1, metavar='RATE')
+    a_parser.add_argument('--noise_std', type=float, default=0, metavar='RATE')
 
     a_parser.add_argument('--dataset', default='P2SASLDataset', type=str,
                           choices=['P2SASLDataset', 'PH14TDataset'])
@@ -318,7 +320,7 @@ def evaluate(slp_model, val_model, dataloader, criterion, device, tokenizer):
                     print('kp_ids_shape:', kp_ids.shape)
                     step_emo_score = criterion(kp_ids[:, :, -1], tgt_input['input_ids'][:, :, -1])
                     emo_scores += step_emo_score.item()
-                    vocab_logits = val_model(kp_ids[:, :, :-1], tgt_input['attention_mask'], src_input)
+                    vocab_logits = val_model(kp_ids[:, :, :-1], tgt_input['attention_mask'], src_input,args)
 
                     # 计算评价指标
                     hypotheses_batch = tokenizer.batch_decode(vocab_logits.argmax(dim=-1), skip_special_tokens=True)
