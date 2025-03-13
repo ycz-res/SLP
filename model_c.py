@@ -209,18 +209,18 @@ class ProjectionLayer(nn.Module):
         self.projection = nn.Sequential(
             # nn.ReLU(),  # 非线性激活
             nn.Linear(input_dim, 512),
-            nn.ReLU(),
+            # nn.ReLU(),
             nn.Linear(512, output_dim),
             # nn.ReLU()  # 非线性激活
         )
 
         # 初始化
-        for layer in self.projection:
-            if isinstance(layer, nn.Linear):
-                nn.init.xavier_uniform_(layer.weight)
-                nn.init.zeros_(layer.bias)
-                layer.weight.requires_grad = False
-                layer.bias.requires_grad = False
+        # for layer in self.projection:
+        #     if isinstance(layer, nn.Linear):
+        #         nn.init.xavier_uniform_(layer.weight)
+        #         nn.init.zeros_(layer.bias)
+        #         layer.weight.requires_grad = False
+        #         layer.bias.requires_grad = False
 
     def forward(self, x):
         projected_x = self.projection(x)
@@ -257,11 +257,9 @@ class ValEmoGene(nn.Module):
         hidden = self.projector_128_1024(hidden)
         hidden = F.normalize(hidden, p=2, dim=-1)
         print('hidden.shape:', hidden.shape)
-        # print('hidden:', hidden)
 
         decoder_input_ids = shift_tokens_right(txt_input['input_ids'], self.txt_decoder.config.pad_token_id)
 
-        # print('decoder_input_ids:', decoder_input_ids)
         print('attention_mask:', txt_input['attention_mask'])
 
         decoder_out = self.txt_decoder(

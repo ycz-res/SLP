@@ -224,7 +224,24 @@ def main(args_, config):
                 torch.save(slp_model.state_dict(), os.path.join(args['checkpoints_dir'], 'best_model_c.pth'))
 
     print("Training completed. Evaluating on test set...")
-    pass
+    emo_score, bleu1, bleu2, bleu3, bleu4, rouge_l = evaluate(slp_model, val_model, test_dataloader,
+                                                              criterion, device, tokenizer)
+    print(
+        f"On test dataset: \n"
+        f"emo_score: {emo_score:.2f}, \n"
+        f"bleu1: {bleu1:.2f}, \n"
+        f"bleu2: {bleu2:.2f}, \n"
+        f"bleu3: {bleu3:.2f}, \n"
+        f"bleu4: {bleu4:.2f}, \n"
+        f"rouge_l: {rouge_l:.2f}.")
+
+    utils.log('test_c',
+              emo_score=emo_score,
+              bleu1=bleu1,
+              bleu2=bleu2,
+              bleu3=bleu3,
+              bleu4=bleu4,
+              rouge_l=rouge_l)
 
 
 def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
