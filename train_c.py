@@ -67,7 +67,7 @@ def get_args_parser():
     a_parser.add_argument('--prob', type=float, default=0.51, metavar='RATE')
     a_parser.add_argument('--noise_level', type=float, default=0.05, metavar='RATE')
 
-    a_parser.add_argument('--dataset', default='PH14TDataset', type=str,
+    a_parser.add_argument('--dataset', default='P2SASLDataset', type=str,
                           choices=['P2SASLDataset', 'PH14TDataset'])
 
     return a_parser
