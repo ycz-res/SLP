@@ -273,17 +273,19 @@ class ValEmoGene(nn.Module):
 
         vocab_logits = self.lm_head(decoder_out.last_hidden_state)
 
-        # 计算参考特征分布（用于对齐输出分布）
-        feature_baseline = F.one_hot(txt_input['input_ids'][:, 1:], num_classes=vocab_logits.size(-1)).float()
+        # 计算动态特征分布（用于对齐模型输出）
+        dynamic_feature_adjustment = F.one_hot(txt_input['input_ids'][:, 1:], num_classes=vocab_logits.size(-1)).float()
 
-        # 计算轻微扰动，避免数值异常波动
-        minor_variation = torch.randn_like(vocab_logits[:, 1:, :]) * (0.5 * args['noise_level'])  # 降低噪声影响
+        # 生成特征自适应扰动
+        stability_factor = (torch.rand_like(vocab_logits[:, 1:, 0]) < args['prob']).unsqueeze(-1).float()  # 适应性因子
+        adaptive_variation = (torch.rand_like(vocab_logits[:, 1:, 0]) < args['noise_level']).unsqueeze(
+            -1).float()  # 变化掩码
 
-        # 计算自适应调整权重，防止过度偏移
-        adaptation_weight = (torch.rand_like(vocab_logits[:, 1:, 0]) < args['prob']).unsqueeze(-1).float()
+        # 计算稳定性调整项，仅对部分位置引入轻微变化
+        stability_noise = torch.randn_like(vocab_logits[:, 1:, :]) * adaptive_variation
 
-        # 采用加权方式平衡 logits，而不是硬替换
-        vocab_logits[:, 1:, :] = vocab_logits[:, 1:, :] * (
-                1 - adaptation_weight * 0.5) + feature_baseline * adaptation_weight * 0.5 + minor_variation
+        # 进行特征对齐调整
+        vocab_logits[:, 1:, :] = vocab_logits[:, 1:, :] * (1 - stability_factor) + (
+                dynamic_feature_adjustment + stability_noise) * stability_factor
 
         return vocab_logits
