@@ -3,7 +3,7 @@ from utils import log
 import argparse
 
 parser = argparse.ArgumentParser(description='参数验证')
-parser.add_argument('--func', default='pn_test', help='执行函数')
+parser.add_argument('--func', default='ph14t_test', help='执行函数')
 args = vars(parser.parse_args())
 
 
@@ -14,7 +14,7 @@ def frange(start, stop, step):
 
 
 # P2SASLDataset 数据集 不同p、n设置对实验的影响
-def p2s_pn_test():
+def p2s_test():
     p_values = [round(x, 2) for x in frange(0.36, 0.52, 0.01)]
     n_values = [round(x, 2) for x in frange(0.05, 0.15, 0.01)]
     for p in p_values:
@@ -40,7 +40,7 @@ def p2s_pn_test():
 
 
 # PH14TDataset 数据集 不同p、n设置对实验的影响
-def ph14t_pn_test():
+def ph14t_test():
     p_values = [round(x, 2) for x in frange(0.15, 0.27, 0.01)]
     n_values = [round(x, 2) for x in frange(0.05, 0.15, 0.01)]
     for p in p_values:
