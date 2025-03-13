@@ -48,7 +48,7 @@ class SLPDataset(Dataset):
 
         # 将批序列的name、tgt分别包装成列表
         for src_sample, tgt_sample in batch:
-            src_sample = '<eos>' + src_sample
+            src_sample = '<pad>' + src_sample
             src_batch.append(src_sample)
             tgt_batch.append(tgt_sample)
 

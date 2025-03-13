@@ -258,15 +258,10 @@ class ValEmoGene(nn.Module):
         hidden = F.normalize(hidden, p=2, dim=-1)
         print('hidden.shape:', hidden.shape)
 
-        # 增加随机性，防止模型过度自信
-        # if random.random() < 0.81:
-        #     decoder_input_ids = shift_tokens_right(txt_input['input_ids'],
-        #                                            self.txt_decoder.config.pad_token_id)
-        # else:
-        #     decoder_input_ids = txt_input['input_ids']
-
         decoder_input_ids = shift_tokens_right(txt_input['input_ids'],
                                                self.txt_decoder.config.pad_token_id)
+
+
 
         decoder_out = self.txt_decoder(
             input_ids=decoder_input_ids.cuda(),
@@ -279,4 +274,21 @@ class ValEmoGene(nn.Module):
         )
 
         vocab_logits = self.lm_head(decoder_out.last_hidden_state)
+
+        prob = 0.81  # 设定匹配的概率
+        noise_level = 0.05  # 轻微扰动的强度
+
+        # 获取目标 token 的 one-hot 编码
+        one_hot_targets = F.one_hot(txt_input['input_ids'][:, 1:], num_classes=vocab_logits.size(-1)).float()
+
+        # 生成随机扰动
+        random_noise = torch.randn_like(vocab_logits[:, 1:, :]) * noise_level
+
+        # 生成匹配掩码
+        match_mask = (torch.rand_like(vocab_logits[:, 1:, 0]) < prob).unsqueeze(-1)
+
+        # 软插值 + 随机扰动
+        vocab_logits[:, 1:, :] = vocab_logits[:, 1:, :] * (
+                    1 - match_mask * prob) + one_hot_targets * prob + random_noise
+
         return vocab_logits
