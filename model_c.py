@@ -209,18 +209,18 @@ class ProjectionLayer(nn.Module):
         self.projection = nn.Sequential(
             # nn.ReLU(),  # 非线性激活
             nn.Linear(input_dim, 512),
-            # nn.ReLU(),
+            nn.ReLU(),
             nn.Linear(512, output_dim),
             # nn.ReLU()  # 非线性激活
         )
 
         # 初始化
-        # for layer in self.projection:
-        #     if isinstance(layer, nn.Linear):
-        #         nn.init.xavier_uniform_(layer.weight)
-        #         nn.init.zeros_(layer.bias)
-        #         layer.weight.requires_grad = False
-        #         layer.bias.requires_grad = False
+        for layer in self.projection:
+            if isinstance(layer, nn.Linear):
+                nn.init.xavier_uniform_(layer.weight)
+                nn.init.zeros_(layer.bias)
+                layer.weight.requires_grad = False
+                layer.bias.requires_grad = False
 
     def forward(self, x):
         projected_x = self.projection(x)
@@ -259,11 +259,14 @@ class ValEmoGene(nn.Module):
         print('hidden.shape:', hidden.shape)
 
         # 增加随机性，防止模型过度自信
-        if random.random() < 0.81:
-            decoder_input_ids = shift_tokens_right(txt_input['input_ids'],
-                                                   self.txt_decoder.config.pad_token_id)
-        else:
-            decoder_input_ids = txt_input['input_ids']
+        # if random.random() < 0.81:
+        #     decoder_input_ids = shift_tokens_right(txt_input['input_ids'],
+        #                                            self.txt_decoder.config.pad_token_id)
+        # else:
+        #     decoder_input_ids = txt_input['input_ids']
+
+        decoder_input_ids = shift_tokens_right(txt_input['input_ids'],
+                                               self.txt_decoder.config.pad_token_id)
 
         decoder_out = self.txt_decoder(
             input_ids=decoder_input_ids.cuda(),

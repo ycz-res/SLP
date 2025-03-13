@@ -321,7 +321,7 @@ def evaluate(slp_model, val_model, dataloader, criterion, device, tokenizer):
                     vocab_logits = val_model(kp_ids[:, :, :-1], tgt_input['attention_mask'], src_input)
 
                     # 计算评价指标
-                    hypotheses_batch = tokenizer.batch_decode(vocab_logits.argmax(dim=-1), skip_special_tokens=True)
+                    hypotheses_batch = tokenizer.batch_decode(vocab_logits.argmax(dim=-1), skip_special_tokens=False)
                     references_batch = tokenizer.batch_decode(src_input['input_ids'], skip_special_tokens=True)
 
                     for hyp, ref in zip(hypotheses_batch, references_batch):
