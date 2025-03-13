@@ -71,8 +71,8 @@ def ph14t_test():
 
 
 if __name__ == "__main__":
-    # eval(args['func'])()
-    p_values = [round(x, 2) for x in p_range(0.52, 0.36, 0.01)]
-    n_values = [round(x, 2) for x in n_range(0.05, 0.15, 0.01)]
-    print(p_values)
-    print(n_values)
+    eval(args['func'])()
+    # p_values = [round(x, 2) for x in p_range(0.52, 0.36, 0.01)]
+    # n_values = [round(x, 2) for x in n_range(0.05, 0.15, 0.01)]
+    # print(p_values)
+    # print(n_values)
