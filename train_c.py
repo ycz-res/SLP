@@ -230,6 +230,8 @@ def main(args_, config):
                                                               criterion, device, tokenizer)
     print(
         f"On test dataset: \n"
+        f"p: {args['prob']:.2f}, \n"
+        f"n: {args['noise_level']:.2f}, \n"
         f"emo_score: {emo_score:.2f}, \n"
         f"bleu1: {bleu1:.2f}, \n"
         f"bleu2: {bleu2:.2f}, \n"
@@ -320,7 +322,7 @@ def evaluate(slp_model, val_model, dataloader, criterion, device, tokenizer):
                     print('kp_ids_shape:', kp_ids.shape)
                     step_emo_score = criterion(kp_ids[:, :, -1], tgt_input['input_ids'][:, :, -1])
                     emo_scores += step_emo_score.item()
-                    vocab_logits = val_model(kp_ids[:, :, :-1], tgt_input['attention_mask'], src_input,args)
+                    vocab_logits = val_model(kp_ids[:, :, :-1], tgt_input['attention_mask'], src_input, args)
 
                     # 计算评价指标
                     hypotheses_batch = tokenizer.batch_decode(vocab_logits.argmax(dim=-1), skip_special_tokens=True)
