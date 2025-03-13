@@ -258,17 +258,19 @@ class ValEmoGene(nn.Module):
         hidden = F.normalize(hidden, p=2, dim=-1)
         print('hidden.shape:', hidden.shape)
 
-        decoder_input_ids = txt_input['input_ids']
-        # decoder_input_ids = shift_tokens_right(txt_input['input_ids'], self.txt_decoder.config.pad_token_id)
-
-        # print('attention_mask:', txt_input['attention_mask'])
+        # 增加随机性，防止模型过度自信
+        if random.random() < 0.81:
+            decoder_input_ids = shift_tokens_right(txt_input['input_ids'],
+                                                   self.txt_decoder.config.pad_token_id)
+        else:
+            decoder_input_ids = txt_input['input_ids']
 
         decoder_out = self.txt_decoder(
-            input_ids=decoder_input_ids,
-            attention_mask=txt_input['attention_mask'],
+            input_ids=decoder_input_ids.cuda(),
+            attention_mask=txt_input['attention_mask'].cuda(),
 
-            encoder_hidden_states=hidden,
-            encoder_attention_mask=kp_mask,
+            encoder_hidden_states=hidden.cuda(),
+            encoder_attention_mask=kp_mask.cuda(),
 
             return_dict=True,
         )
