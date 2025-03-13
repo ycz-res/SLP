@@ -246,6 +246,7 @@ def main(args_, config):
               bleu3=bleu3,
               bleu4=bleu4,
               rouge_l=rouge_l)
+    utils.log('pl_c')
 
 
 def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
