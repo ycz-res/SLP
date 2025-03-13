@@ -230,8 +230,6 @@ def main(args_, config):
                                                               criterion, device, tokenizer)
     print(
         f"On test dataset: \n"
-        f"p: {args['prob']:.2f}, \n"
-        f"n: {args['noise_level']:.2f}, \n"
         f"emo_score: {emo_score:.2f}, \n"
         f"bleu1: {bleu1:.2f}, \n"
         f"bleu2: {bleu2:.2f}, \n"
@@ -240,6 +238,8 @@ def main(args_, config):
         f"rouge_l: {rouge_l:.2f}.")
 
     utils.log('test_c',
+              p=args['prob'],
+              n=args['noise_level'],
               emo_score=emo_score,
               bleu1=bleu1,
               bleu2=bleu2,
