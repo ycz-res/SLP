@@ -238,15 +238,12 @@ def main(args_, config):
         f"rouge_l: {rouge_l:.2f}.")
 
     utils.log('test_c',
-              p=args['prob'],
-              n=args['noise_level'],
               emo_score=emo_score,
               bleu1=bleu1,
               bleu2=bleu2,
               bleu3=bleu3,
               bleu4=bleu4,
               rouge_l=rouge_l)
-    utils.log('pl_c')
 
 
 def train_one_epoch(model, dataloader, optimizer, criterion, device, scaler):
