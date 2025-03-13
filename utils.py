@@ -59,10 +59,10 @@ def write_log(filename, phase, **kwargs):
         current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         # 将kwargs解包并用空格隔开
         content = '[' + current_time + ']|' + phase + '|' + '|'.join(f"{key}={value}" for key, value in kwargs.items())
-    # 追加写入到文件
-    with open(filename, 'a', encoding='utf-8') as file:
-        file.write(content + '\n')
-    print(f"{Back.GREEN}保存成功{Back.RESET}")
+        # 追加写入到文件
+        with open(filename, 'a', encoding='utf-8') as file:
+            file.write(content + '\n')
+        print(f"{Back.GREEN}保存成功{Back.RESET}")
 
 
 def log(phase, **kwargs):
