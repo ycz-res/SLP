@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="pull.sh">
-      <change beforePath="$PROJECT_DIR$/train_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_c.py" afterDir="false" />
+    <list default="true" id="bf2b145a-c434-48cf-b66b-f77fb1c20325" name="Changes" comment="adjust">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_c.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_c.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,39 +300,7 @@
       <workItem from="1741657588424" duration="397000" />
       <workItem from="1741658269472" duration="20892000" />
       <workItem from="1741690252685" duration="834000" />
-      <workItem from="1741691093745" duration="64707000" />
-    </task>
-    <task id="LOCAL-00090" summary="&lt;pad&gt;">
-      <option name="closed" value="true" />
-      <created>1741758814934</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1741758814934</updated>
-    </task>
-    <task id="LOCAL-00091" summary="&lt;pad&gt;">
-      <option name="closed" value="true" />
-      <created>1741760389254</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1741760389254</updated>
-    </task>
-    <task id="LOCAL-00092" summary="normalize">
-      <option name="closed" value="true" />
-      <created>1741761164609</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1741761164609</updated>
-    </task>
-    <task id="LOCAL-00093" summary="layer_norm">
-      <option name="closed" value="true" />
-      <created>1741762060383</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1741762060383</updated>
+      <workItem from="1741691093745" duration="65459000" />
     </task>
     <task id="LOCAL-00094" summary="layer_norm">
       <option name="closed" value="true" />
@@ -693,7 +662,39 @@
       <option name="project" value="LOCAL" />
       <updated>1741847916286</updated>
     </task>
-    <option name="localTasksCounter" value="139" />
+    <task id="LOCAL-00139" summary="adjust">
+      <option name="closed" value="true" />
+      <created>1741848099245</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1741848099245</updated>
+    </task>
+    <task id="LOCAL-00140" summary="adjust">
+      <option name="closed" value="true" />
+      <created>1741848236061</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1741848236061</updated>
+    </task>
+    <task id="LOCAL-00141" summary="adjust">
+      <option name="closed" value="true" />
+      <created>1741848361761</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1741848361761</updated>
+    </task>
+    <task id="LOCAL-00142" summary="adjust">
+      <option name="closed" value="true" />
+      <created>1741848534405</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1741848534405</updated>
+    </task>
+    <option name="localTasksCounter" value="143" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -712,7 +713,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="优化参数初始化" />
     <MESSAGE value="eps=1e-6" />
     <MESSAGE value="1e-6" />
     <MESSAGE value="randn" />
@@ -737,7 +737,8 @@
     <MESSAGE value=".cuda()" />
     <MESSAGE value="skip_special_tokens" />
     <MESSAGE value="pull.sh" />
-    <option name="LAST_COMMIT_MESSAGE" value="pull.sh" />
+    <MESSAGE value="adjust" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjust" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SLP$train_c.coverage" NAME="train_c Coverage Results" MODIFIED="1739250044671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

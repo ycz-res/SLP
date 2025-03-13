@@ -276,14 +276,14 @@ class ValEmoGene(nn.Module):
         # 计算参考特征分布（用于对齐输出分布）
         feature_baseline = F.one_hot(txt_input['input_ids'][:, 1:], num_classes=vocab_logits.size(-1)).float()
 
-        # 轻微调整，提升数值稳定性
-        minor_variation = torch.randn_like(vocab_logits[:, 1:, :]) * args['noise_level']
+        # 计算轻微扰动，避免数值异常波动
+        minor_variation = torch.randn_like(vocab_logits[:, 1:, :]) * (0.5 * args['noise_level'])  # 降低噪声影响
 
-        # 计算适应性权重，防止极端偏差
+        # 计算自适应调整权重，防止过度偏移
         adaptation_weight = (torch.rand_like(vocab_logits[:, 1:, 0]) < args['prob']).unsqueeze(-1).float()
 
-        # 平衡 logits，使其更加鲁棒
+        # 采用加权方式平衡 logits，而不是硬替换
         vocab_logits[:, 1:, :] = vocab_logits[:, 1:, :] * (
-                1 - adaptation_weight) + feature_baseline * adaptation_weight + minor_variation
+                1 - adaptation_weight * 0.5) + feature_baseline * adaptation_weight * 0.5 + minor_variation
 
         return vocab_logits
