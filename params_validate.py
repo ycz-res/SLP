@@ -49,7 +49,7 @@ def p2s_test():
 
 # PH14TDataset 数据集 不同p、n设置对实验的影响
 def ph14t_test():
-    p_values = [round(x, 2) for x in p_range(0.27, 0.15, 0.01)]
+    p_values = [round(x, 2) for x in p_range(0.19, 0.15, 0.01)]
     n_values = [round(x, 2) for x in n_range(0.05, 0.15, 0.01)]
     for p in p_values:
         for n in n_values:
