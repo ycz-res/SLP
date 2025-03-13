@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# chmod +x pull.sh
 # 定义GitHub仓库的URL
 REPO_URL="https://github.com/SoftpaseFar/SLP.git"  # 替换为你的实际仓库路径
 
