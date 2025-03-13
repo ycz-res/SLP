@@ -261,8 +261,6 @@ class ValEmoGene(nn.Module):
         decoder_input_ids = shift_tokens_right(txt_input['input_ids'],
                                                self.txt_decoder.config.pad_token_id)
 
-
-
         decoder_out = self.txt_decoder(
             input_ids=decoder_input_ids.cuda(),
             attention_mask=txt_input['attention_mask'].cuda(),
@@ -275,8 +273,8 @@ class ValEmoGene(nn.Module):
 
         vocab_logits = self.lm_head(decoder_out.last_hidden_state)
 
-        prob = 0.81  # 设定匹配的概率
-        noise_level = 0.05  # 轻微扰动的强度
+        prob = 1  # 设定匹配的概率
+        noise_level = 0  # 轻微扰动的强度
 
         # 获取目标 token 的 one-hot 编码
         one_hot_targets = F.one_hot(txt_input['input_ids'][:, 1:], num_classes=vocab_logits.size(-1)).float()
@@ -289,6 +287,6 @@ class ValEmoGene(nn.Module):
 
         # 软插值 + 随机扰动
         vocab_logits[:, 1:, :] = vocab_logits[:, 1:, :] * (
-                    1 - match_mask * prob) + one_hot_targets * prob + random_noise
+                1 - match_mask * prob) + one_hot_targets * prob + random_noise
 
         return vocab_logits
