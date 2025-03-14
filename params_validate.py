@@ -4,6 +4,8 @@ import argparse
 
 parser = argparse.ArgumentParser(description='参数验证')
 parser.add_argument('--func', default='ph14t_test', help='执行函数')
+parser.add_argument('--dataset', default='P2SASLDataset', type=str,
+                      choices=['P2SASLDataset', 'PH14TDataset'])
 parser.add_argument('--p', type=float, default=0.28, metavar='RATE')
 parser.add_argument('--n', type=float, default=0.05, metavar='RATE')
 args = vars(parser.parse_args())
