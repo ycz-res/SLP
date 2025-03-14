@@ -21,7 +21,7 @@ def plot_ll():
     y_how2sign = np.array([17.79, 20.35, 20.06, 20.8, 20.86, 21.46, 21.12, 21.18, 20.93, 21.23, 20.48])
 
     plt.plot(x, y_p14t, label='P14T')
-    plt.plot(x, y_how2sign, label='How2Sign')
+    plt.plot(x, y_how2sign, label='P2S(ASL)')
     plt.xlabel('lambda')
     plt.ylabel('BLEU-4')
     plt.legend()
@@ -34,11 +34,11 @@ def plot_ll():
     plt.close()
 
 
-def plot_nl():
+def plot_nl_pre():
     # 数据
     x = np.array([1, 2, 3, 4, 5])
-    y_p14t = np.array([1.26,9.61,17.97,26.32,33.68])
-    y_how2sign = np.array([0.89,14.73,28.58,42.43,55.28])
+    y_p14t = np.array([11.05, 12.73, 11.67, 11.56, 10.94])
+    y_how2sign = np.array([20.11, 19.97, 20.52, 19.74, 19.92])
 
     width = 0.3  # 柱状图宽度
 
@@ -63,6 +63,41 @@ def plot_nl():
     # 保存图像
     save_path = os.path.join(output_dir, "plot_nl.png")
     plt.savefig(save_path, dpi=300)
+    plt.show()
+    print(f"Saved {save_path}")
+    plt.close()
+
+def plot_nl():
+    # 数据
+    x = np.array([1, 2, 3, 4, 5])
+    y_p14t = np.array([11.05, 12.73, 11.67, 11.56, 10.94])
+    y_how2sign = np.array([20.11, 19.97, 20.52, 19.74, 19.92])
+
+    width = 0.3  # 柱状图宽度
+
+    # 适合科研论文的颜色（无边框）
+    color_p14t = '#FFA500'  # 橙色
+    color_how2sign = '#C21E56'  # 深红色
+
+    plt.figure(figsize=(6, 4))  # 控制图表大小
+    plt.bar(x - width / 2, y_p14t, width=width, label='PH14T', color=color_p14t)
+    plt.bar(x + width / 2, y_how2sign, width=width, label='P2S(ASL)', color=color_how2sign)
+
+    # 添加标签
+    plt.xlabel('Number of Layers', fontsize=12)
+    plt.ylabel('BLEU-4', fontsize=12)
+    plt.xticks(x, fontsize=10)
+    plt.yticks(fontsize=10)
+
+    # 图例放外侧上方
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.15), fontsize=10, frameon=False, ncol=2)
+
+    # 调整边距
+    plt.tight_layout()
+
+    # 保存图像
+    save_path = os.path.join(output_dir, "plot_nl.png")
+    plt.savefig(save_path, dpi=300, bbox_inches='tight')  # bbox_inches 确保图例不会被裁剪
     plt.show()
     print(f"Saved {save_path}")
     plt.close()

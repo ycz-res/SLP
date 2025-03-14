@@ -42,7 +42,7 @@ val_loss_values = [val + offset for val in val_loss_values]
 # 绘制曲线
 plt.figure(figsize=(12, 6))
 plt.plot(epochs, train_loss_values, marker='.', linestyle='-', color='orange', label='PH14T')
-plt.plot(epochs, val_loss_values, marker='.', linestyle='-', color='red', label='P2S(ASL)')
+plt.plot(epochs, val_loss_values, marker='.', linestyle='-', color='#C21E56', label='P2S(ASL)')
 
 plt.xlabel('Epoch')
 plt.ylabel('Emotional Similarity')
