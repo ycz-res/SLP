@@ -139,7 +139,7 @@ def main(args_, config):
                                  drop_last=True)
 
     # SLP Model
-    slp_model = EmoGene(num_heads=args['num_layers'])
+    slp_model = EmoGene(num_layers=args['num_layers'])
     if args['finetune']:
         try:
             print("加载EmoGene预训练权重...")
