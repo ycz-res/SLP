@@ -23,8 +23,8 @@ def n_range(start, stop, step):
 
 # P2SASLDataset 数据集 不同p、n设置对实验的影响
 def p2s_test():
-    p_values = [round(x, 2) for x in p_range(0.52, 0.36, 0.01)]
-    n_values = [round(x, 2) for x in n_range(0.05, 0.15, 0.01)]
+    p_values = [round(x, 2) for x in p_range(0.58, 0.52, 0.01)]
+    n_values = [round(x, 2) for x in n_range(0.05, 0.18, 0.01)]
     for p in p_values:
         for n in n_values:
             print(f"Running training with p/n: {p}/{n}")
